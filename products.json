@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "id": 101,
+      "name": "Smartphone",
+      "description": "Smartphone de última geração com câmera avançada.",
+      "full_description": "O Smartphone de última geração oferece a combinação perfeita entre design elegante e desempenho excepcional. Com uma câmera avançada de alta resolução, você poderá capturar imagens nítidas e vibrantes em qualquer ambiente. Equipado com um processador de última linha e grande capacidade de armazenamento, é ideal para quem busca alta performance e experiência de usuário fluida, seja para trabalho ou lazer. Além disso, sua tela de alta definição garante uma excelente visualização de vídeos e imagens.",
+      "price": 1500.00,
+      "category": 1,
+      "image": "/src/assets/smartphone-image.jpg"
+    },
+    {
+      "id": 102,
+      "name": "Laptop",
+      "description": "Laptop com excelente desempenho para trabalho e estudo.",
+      "full_description": "Este Laptop de alto desempenho é ideal para quem precisa de agilidade e confiabilidade no trabalho ou estudo. Com processador de última geração e memória RAM expansível, oferece ótimo desempenho para tarefas que exigem mais poder de processamento, como edição de fotos e vídeos, navegação em múltiplas abas e execução de softwares mais pesados. A tela LED de 15.6' garante excelente visualização, e a bateria de longa duração mantém você produtivo por mais tempo.",
+      "price": 2500.00,
+      "category": 1,
+      "image": "/src/assets/laptop-image.jpg"
+    },
+    {
+      "id": 103,
+      "name": "Fones de Ouvido",
+      "description": "Fones de ouvido com cancelamento de ruído.",
+      "full_description": "Os Fones de Ouvido com cancelamento de ruído são perfeitos para quem busca imersão total no som. Com tecnologia avançada de redução de ruído, você pode se concentrar no que está ouvindo sem distrações externas. Seu design ergonômico garante conforto por longos períodos de uso, seja para ouvir músicas, assistir filmes ou durante conferências e chamadas. Ideal para quem procura uma experiência sonora de alta qualidade.",
+      "price": 200.00,
+      "category": 1,
+      "image": "/src/assets/headphones-image.jpg"
+    },
+    {
+      "id": 104,
+      "name": "Camiseta",
+      "description": "Camiseta 100% algodão em várias cores.",
+      "full_description": "A Camiseta 100% algodão é a escolha ideal para quem busca conforto e estilo no dia a dia. Disponível em várias cores, ela oferece um toque macio e confortável, sendo perfeita para todas as estações. Seu tecido de algodão de alta qualidade proporciona respirabilidade e durabilidade, mantendo você fresco e confortável. Ideal para atividades cotidianas ou para compor looks mais casuais.",
+      "price": 50.00,
+      "category": 2,
+      "image": "/src/assets/tshirt-image.jpg"
+    },
+    {
+      "id": 105,
+      "name": "Jaqueta",
+      "description": "Jaqueta de inverno resistente à água.",
+      "full_description": "A Jaqueta de inverno resistente à água foi desenvolvida para manter você aquecido e seco, mesmo nos dias mais frios e chuvosos. Com tecido impermeável, ela oferece proteção contra a água e o vento, tornando-a perfeita para aventuras ao ar livre ou para o dia a dia em climas mais rigorosos. Seu forro térmico e ajuste perfeito garantem conforto e liberdade de movimento.",
+      "price": 300.00,
+      "category": 2,
+      "image": "/src/assets/jacket-image.jpg"
+    },
+    {
+      "id": 106,
+      "name": "Calça Jeans",
+      "description": "Calça jeans de alta qualidade com ajuste perfeito.",
+      "full_description": "A Calça Jeans de alta qualidade foi projetada para oferecer um ajuste perfeito e um visual moderno. Confeccionada com tecido de jeans macio e resistente, ela é confortável para o uso diário e combina com diversas ocasiões, desde passeios casuais até um look mais elaborado. Sua costura reforçada e corte anatômico garantem durabilidade e estilo.",
+      "price": 120.00,
+      "category": 2,
+      "image": "/src/assets/jeans-image.jpg"
+    },
+    {
+      "id": 107,
+      "name": "Sofá",
+      "description": "Sofá confortável para sala de estar.",
+      "full_description": "O Sofá confortável para sala de estar oferece o equilíbrio perfeito entre conforto e estilo. Seu design moderno, aliado a um estofamento macio, proporciona relaxamento total, ideal para momentos de lazer ou para reuniões em família. As almofadas ergonômicas garantem o máximo conforto durante o uso. Perfeito para salas de estar ou qualquer outro ambiente que precise de um toque de sofisticação e aconchego.",
+      "price": 800.00,
+      "category": 3,
+      "image": "/src/assets/sofa-image.jpg"
+    },
+    {
+      "id": 108,
+      "name": "Cafeteira",
+      "description": "Cafeteira elétrica com funções programáveis.",
+      "full_description": "A Cafeteira elétrica com funções programáveis traz a comodidade de preparar o café perfeito de forma prática e rápida. Com capacidade para até 12 xícaras, ela oferece diferentes opções de intensidade de café e possui timer para programar a hora de preparo. Ideal para quem ama café fresco pela manhã ou durante o dia.",
+      "price": 150.00,
+      "category": 3,
+      "image": "/src/assets/coffee-maker-image.jpg"
+    },
+    {
+      "id": 109,
+      "name": "Luminária",
+      "description": "Luminária de mesa moderna e elegante.",
+      "full_description": "A Luminária de mesa moderna e elegante é perfeita para quem busca adicionar um toque de sofisticação ao ambiente. Seu design minimalista e sua iluminação suave tornam-na ideal para estudos, trabalho ou como peça decorativa em qualquer espaço. A lâmpada de baixo consumo de energia garante longa durabilidade e eficiência energética.",
+      "price": 70.00,
+      "category": 3,
+      "image": "/src/assets/lamp-image.jpg"
+    },
+    {
+      "id": 110,
+      "name": "Bola de Futebol",
+      "description": "Bola oficial para partidas de futebol.",
+      "full_description": "A Bola oficial para partidas de futebol é feita com material de alta durabilidade, ideal para jogos intensos em campos de futebol. Com design profissional, ela proporciona excelente controle e precisão, garantindo performance de alto nível durante as partidas. A câmara interna de ar assegura resistência e leveza.",
+      "price": 100.00,
+      "category": 4,
+      "image": "/src/assets/football-image.jpg"
+    },
+    {
+      "id": 111,
+      "name": "Bicicleta",
+      "description": "Bicicleta de montanha com suspensão total.",
+      "full_description": "A Bicicleta de montanha com suspensão total foi projetada para enfrentar os terrenos mais difíceis, oferecendo uma experiência confortável e segura em trilhas e estradas irregulares. Com suspensão dianteira e traseira e aro reforçado, ela garante estabilidade e controle em qualquer tipo de superfície. Ideal para aventureiros e ciclistas apaixonados por desafios.",
+      "price": 1200.00,
+      "category": 4,
+      "image": "/src/assets/bicycle-image.jpg"
+    },
+    {
+      "id": 112,
+      "name": "Tênis de Corrida",
+      "description": "Tênis leve e confortável para corrida.",
+      "full_description": "O Tênis de Corrida leve e confortável foi desenvolvido para oferecer conforto máximo e desempenho superior durante suas atividades esportivas. Com sola antiderrapante e absorção de impactos, ele é ideal para quem pratica corrida, caminhada ou treinos intensos. Seu design moderno e sua leveza tornam este tênis a escolha perfeita para corredores de todos os níveis.",
+      "price": 200.00,
+      "category": 4,
+      "image": "/src/assets/running-shoes-image.jpg"
+    }
+  ]
+}

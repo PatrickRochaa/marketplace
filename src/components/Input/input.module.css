@@ -1,0 +1,24 @@
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+/*mensagem de erro*/
+.erro {
+  --tw-text-opacity: 1;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgb(239 68 68 / var(--tw-text-opacity)); /* #ef4444 */
+  margin-top: 0.25rem /* 4px */;
+  margin-bottom: 0.25rem /* 4px */;
+}

@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.selected {
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selected:hover {
+  background-color: #e0e0e0;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+
+  /* Estados iniciais para transição */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.options.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.option {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #d4f1d4; /* Verde ao passar o mouse */
+}

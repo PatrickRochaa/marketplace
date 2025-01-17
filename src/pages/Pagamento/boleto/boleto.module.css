@@ -1,0 +1,71 @@
+.bankTransferInfo {
+  display: flex;
+  flex-direction: column; /* Organiza os itens de forma vertical */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Adiciona margens para espaçamento */
+}
+
+.fakeBoletoIcon {
+  margin: 20px 0; /* Espaçamento entre o ícone e o restante do conteúdo */
+}
+
+.downloadButton {
+  margin-top: 15px; /* Espaçamento entre o botão e o conteúdo acima */
+  padding: 10px 20px; /* Ajuste o tamanho do botão */
+  cursor: pointer;
+  background-color: #4caf50; /* Cor do botão */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.downloadButton:hover {
+  background-color: #45a049; /* Cor do botão quando em hover */
+}
+
+.paymentInfo {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777; /* Cor mais suave para o texto explicativo */
+}
+
+/*conatiner do select*/
+.installmentsContainer {
+  display: flex;
+}
+
+/* Estilo para o select */
+.installmentsContainer select {
+  color: #008000;
+  border: 2px solid #008000;
+  border-radius: 8px; /* Borda arredondada */
+  padding: 12px 20px; /* Aumenta o tamanho do select */
+  font-size: 16px; /* Tamanho maior da fonte */
+  transition: all 0.3s ease; /* Animação suave */
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Estilo ao focar no select */
+.installmentsContainer select:focus {
+  outline: none; /* Remove a borda padrão */
+  border-color: #218838; /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Sombra verde ao focar */
+}
+
+/* Estilo da label */
+.installmentsContainer label {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+  display: block;
+}
+
+/* Estilo do container do select */
+.installmentsContainer {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}

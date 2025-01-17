@@ -1,0 +1,51 @@
+.pixInfo {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.qrCode {
+  width: 200px; /* Ajuste conforme necessário */
+  height: 200px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.pixDetails,
+.paymentInfo,
+.instructions {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.pixDetails p,
+.paymentInfo p,
+.instructions p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.instructions p {
+  font-style: italic;
+  color: #777;
+}
+
+.qrCode {
+  margin-top: 10px;
+  color: #333; /* Cor do ícone */
+}
+
+.copyButton {
+  background-color: #4caf50; /* Cor verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.copyButton:hover {
+  background-color: #45a049;
+}

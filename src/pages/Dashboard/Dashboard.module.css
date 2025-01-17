@@ -1,0 +1,219 @@
+/*Container Geral*/
+.dashboard {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto; /* Alinha o conteúdo centralizado */
+  width: 100%;
+  border: 1px solid #ddd; /* Borda leve para destacar o contêiner */
+  border-radius: 8px; /* Borda arredondada, se desejar um visual mais suave */
+}
+
+/*Barra lateral*/
+.sidebar {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/*textos lateral*/
+.sidebarHeader {
+  text-align: center;
+}
+
+/*titulo lateral*/
+* .sidebarHeader h2 {
+  font-size: 1.5rem;
+}
+
+/*remeçao text decorato link*/
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+/*espáco interno link*/
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+/*configurando diretamente caminho do link*/
+.sidebar ul li a {
+  color: #adb5bd; /* Texto cinza claro */
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #495057; /* Destaque no hover */
+  color: #fff; /* Texto branco */
+}
+
+/*container dos produtos*/
+.mainContent {
+  flex: 1;
+  padding: 10px;
+  background-color: #f5f5f5;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: FadeIn 0.8s forwards;
+}
+
+/* Animação da entrada */
+@keyframes FadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*Header dos Produtos*/
+.header {
+  display: flex;
+  justify-content: space-around; /* Espaço entre o título e o botão */
+  align-self: center; /* Alinha verticalmente os itens no centro */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/*titulo pagina*/
+.header h1 {
+  border: none;
+  margin-top: 30px;
+}
+
+/*Botao de adicionar produto*/
+.addProductBtn {
+  background-color: #008000;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.addProductBtn:hover {
+  background-color: #006400;
+  transform: scale(1.05);
+}
+
+/*exibiçao dos produtos*/
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/*container dos produtos*/
+.productCard {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/*imagem do produto*/
+.productImage {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/*nome do produto*/
+.productInfo h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+/*preço  do produto*/
+.productInfo p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/*container dos botoes*/
+.productActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 8px;
+}
+
+/*designer dos botoes*/
+.deletProduct,
+.editProduct {
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  padding: 8px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/*botao de ediçao*/
+.editProduct {
+  text-decoration: none;
+  background-color: #747c83;
+}
+.editProduct:hover {
+  background-color: #5c6063;
+}
+
+/*botao de excluir*/
+.deletProduct {
+  background-color: #f03547;
+}
+
+.deletProduct:hover {
+  background-color: #c92e3d;
+}
+
+/*responsividade*/
+@media (max-width: 768px) {
+  /*Container Geral*/
+  .dashboard {
+    flex-direction: column;
+    width: 100%; /* Garante que ocupe toda a largura da tela */
+  }
+
+  /*barra lateral*/
+  .sidebar {
+    width: 100%; /* Faz a sidebar ocupar toda a largura em telas pequenas */
+    box-shadow: none; /* Remove a sombra na versão mobile */
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+
+  /*Header dos produtos*/
+  .header {
+    flex-direction: column; /* Garante a coluna em telas pequenas */
+  }
+
+  /*botao de adicionar produto*/
+  .addProductBtn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+}

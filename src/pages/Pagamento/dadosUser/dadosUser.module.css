@@ -1,0 +1,65 @@
+/* Estilo para a seção de dados do usuário */
+.user {
+  margin-top: 20px;
+}
+
+/* Cada item de dados */
+.profileItem {
+  display: flex;
+  justify-content: space-between; /* Alinha as colunas lado a lado */
+  margin-bottom: 15px;
+  flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
+}
+
+/* Cada conjunto de dados (campo e input) */
+.profileDados {
+  width: 48%; /* Ocupa 48% da largura em telas maiores */
+  margin-bottom: 10px;
+}
+
+/* Estilo dos inputs */
+.input {
+  width: 100%; /* Ocupa 100% da largura do seu container */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+
+/* Estilo para os dados de perfil */
+.profileDados {
+  width: 48%; /* Ocupa metade da largura */
+}
+
+/* Estilo para os textos dentro dos dados do perfil */
+.profileDados strong {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Estilo para dispositivos móveis */
+@media (max-width: 768px) {
+  /* Dados do usuário - Exibir em coluna */
+  .profileItem {
+    flex-direction: column; /* Organiza os inputs em uma coluna */
+  }
+
+  .profileDados {
+    width: 100%; /* Cada input ocupa 100% da largura */
+    margin-bottom: 15px; /* Espaço entre os campos */
+  }
+}
+
+/* Estilo para dispositivos maiores */
+@media (min-width: 769px) {
+  /* Dados do usuário - Exibir em duas colunas */
+  .profileItem {
+    flex-direction: row;
+  }
+
+  .profileDados {
+    width: 48%;
+  }
+}

@@ -1,0 +1,35 @@
+/* Resetando margens e fontes padrões */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Cor de fundo e fonte */
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CSS Global */
+body.modalOpen {
+  overflow: hidden;
+}
+
+/* Layout Principal */
+main {
+  max-width: 1200px;
+  width: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

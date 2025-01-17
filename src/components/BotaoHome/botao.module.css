@@ -1,0 +1,35 @@
+.button {
+  padding: 10px 20px; /* Reduzido para tornar o botão mais equilibrado */
+  font-size: 1.5rem; /* Aumentado para melhorar a legibilidade */
+  background-color: #008000; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Remove borda */
+  cursor: pointer; /* Adiciona indicador de clique */
+  border-radius: 10px; /* Bordas arredondadas para suavizar o visual */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+  transition: all 0.3s ease-in-out; /* Transição suave ao interagir */
+  font-weight: bold; /* Negrito para destacar o texto */
+  margin-top: 10px;
+  transform: translateY(20px);
+  opacity: 0;
+  z-index: 10;
+  animation: tableFadeIn 0.8s forwards;
+}
+
+/* Animação da tabela */
+@keyframes tableFadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.button:hover {
+  background-color: #006400; /* Cor de fundo ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta a sombra ao passar o mouse */
+}
+
+.button:active {
+  background-color: #004d00; /* Cor de fundo ao clicar */
+  transform: scale(1); /* Volta ao tamanho normal ao clicar */
+}

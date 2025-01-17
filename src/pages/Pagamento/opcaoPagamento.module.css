@@ -1,0 +1,88 @@
+/* Opções de pagamento */
+.paymentOptions {
+  display: flex;
+  justify-content: space-around; /* Distribui as opções igualmente */
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+/* Estilo para cada opção de pagamento */
+.paymentOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  width: 30%;
+  text-align: center;
+  margin-bottom: 15px;
+  transition: transform 0.5s ease, border-color 0.5s ease; /* Transição suave na borda */
+}
+
+/* Efeito hover nas opções de pagamento */
+.paymentOption:hover {
+  border-color: #008000; /* Muda a borda para verde ao passar o mouse */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(38, 129, 19, 0.3);
+}
+
+/* Estilo para a opção de pagamento selecionada */
+.selected {
+  border-color: #008000;
+  background-color: #f0f9f4; /* Muda o fundo para um tom suave de verde */
+}
+
+/* Texto dentro de cada opção de pagamento */
+.paymentOption span {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilo dos botões */
+.buttons {
+  display: flex;
+  justify-content: space-between; /* Distribui os botões igualmente */
+  margin-top: 20px;
+}
+
+/* Estilo para dispositivos móveis */
+@media (max-width: 768px) {
+  .profileDados {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* Opções de pagamento em coluna */
+  .paymentOptions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .paymentOption {
+    width: 80%;
+    margin-bottom: 15px;
+  }
+}
+
+/* Estilo para dispositivos maiores */
+@media (min-width: 769px) {
+  /* Opções de pagamento em linha */
+  .paymentOptions {
+    flex-direction: row;
+    width: 600px;
+  }
+
+  .paymentOption {
+    width: 30%;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 800px) {
+  .paymentOptions {
+    width: 700px;
+  }
+}

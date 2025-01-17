@@ -1,0 +1,183 @@
+/* Estilo geral do contêiner principal do dashboard */
+.dashboard {
+  display: flex;
+  position: relative;
+  flex-direction: column; /* Itens em coluna por padrão para mobile */
+  margin: 0 auto; /* Centraliza o contêiner na página */
+  width: 100%; /* Ocupa toda a largura disponível */
+  border: 1px solid #ddd; /* Borda leve */
+  border-radius: 8px;
+}
+
+/* Barra lateral de navegação do dashboard */
+.sidebar {
+  background-color: #333; /* Fundo escuro */
+  color: white; /* Texto branco */
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0;
+}
+
+/* Cabeçalho da barra lateral */
+.sidebarHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo do título do cabeçalho na barra lateral */
+.sidebarHeader h2 {
+  font-size: 1.5rem;
+}
+
+/* Lista de navegação da barra lateral */
+.sidebar ul {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove espaçamento interno */
+}
+
+/* Itens da lista de navegação */
+.sidebar ul li {
+  margin: 15px 0; /* Espaçamento entre os itens */
+}
+
+/* Links de navegação dentro dos itens da lista */
+.sidebar ul li a {
+  color: #adb5bd; /* Texto cinza claro */
+  text-decoration: none; /* Remove o sublinhado */
+  font-size: 16px;
+  display: block; /* Ocupa toda a área do pai */
+  padding: 10px 15px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  transition: background-color 0.3s; /* Transição suave no hover */
+}
+
+/* Efeito ao passar o mouse sobre os links */
+.sidebar ul li a:hover {
+  background-color: #495057; /* Cor de fundo mais escura */
+  color: #fff; /* Texto branco */
+}
+
+/* Área principal do dashboard */
+.mainContent {
+  flex: 1; /* Ocupa o restante do espaço */
+  padding: 20px; /* Espaçamento interno */
+  background-color: #f5f5f5; /* Fundo claro */
+}
+
+/* Cabeçalho da área principal */
+.header {
+  display: flex;
+  justify-content: space-between; /* Espaço entre elementos */
+  align-items: center; /* Alinha verticalmente */
+  gap: 10px; /* Espaçamento entre itens */
+  flex-direction: column; /* Coluna por padrão */
+}
+
+/* Titulo Perfil*/
+.header h1 {
+  border: none;
+  margin: 0;
+}
+
+/* Informações do perfil do usuário */
+.profileInfo {
+  background-color: #ffffff; /* Fundo branco */
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  border: 2px solid #ccc inset; /* Borda interna */
+  transform: translateY(20px);
+  opacity: 0;
+  animation: FadeIn 0.8s forwards;
+}
+
+/* Animação da entrada */
+@keyframes FadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Borda ao redor das informações do perfil */
+.profileBorder {
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  border: 2px solid #ccc; /* Borda cinza */
+}
+
+/* Itens individuais do perfil */
+.profileItem {
+  display: flex;
+  flex-direction: column; /* Itens em coluna por padrão */
+  gap: 10px; /* Espaçamento entre os itens */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin: 5px;
+}
+
+/* Campos específicos de dados do perfil */
+.profileDados {
+  display: flex;
+  flex-direction: column; /* Itens em coluna */
+}
+
+/* Estilo para os títulos dos campos de perfil */
+.profileItem strong {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Campos de entrada de dados */
+.input {
+  width: 100%; /* Ocupa toda a largura do pai */
+  padding: 10px; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho da fonte */
+  border: none; /* Remove borda padrão */
+  outline: none; /* Remove contorno ao focar */
+  border-radius: 10px; /* Bordas arredondadas */
+  margin: 8px 0; /* Espaçamento vertical */
+  color: #666; /* Texto cinza escuro */
+  border: 2px solid #ccc; /* Borda cinza */
+}
+
+/* Placeholder dos campos de entrada */
+.input::placeholder {
+  color: #aaa; /* Texto cinza claro */
+}
+
+/* Animação de rotação do spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Início */
+  }
+  to {
+    transform: rotate(360deg); /* Fim */
+  }
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 768px) {
+  .dashboard {
+    flex-direction: row; /* Alinha itens lado a lado em telas grandes */
+    width: 80vw; /* Ocupa 80% da largura da viewport */
+  }
+  .sidebar {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px; /* Remove a borda inferior esquerda */
+  }
+}
+
+@media (min-width: 800px) {
+  .dashboard {
+    max-width: 800px; /* Largura máxima */
+  }
+}
+
+@media (min-width: 910px) {
+  .profileItem {
+    flex-direction: row; /* Alinha itens lado a lado em telas grandes */
+  }
+}

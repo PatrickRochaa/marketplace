@@ -1,0 +1,99 @@
+/*container Header*/
+.containerHeader {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 4rem /* 64px */;
+  margin-bottom: 1rem /* 16px */;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/*imagem header*/
+.imgHeader {
+  display: block;
+  width: 80px;
+  border-radius: 8px;
+}
+
+/*container icone Header*/
+.login {
+  border: 2px solid #333;
+  border-radius: 9999px;
+  padding: 0.5rem /* 4px */;
+  z-index: 10;
+  width: 2.5rem /* 40px */;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem /* 8px */;
+  cursor: pointer;
+}
+
+/*menu*/
+.dropMenu {
+  position: absolute;
+  right: 0px;
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  margin-top: 15px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: mostrarMenu 0.5s ease forwards;
+  z-index: 10;
+}
+
+.btnMenu {
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.btnMenu:hover {
+  background-color: #d4f1d4;
+}
+
+.btnLogout {
+  color: red;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.8s ease-in-out;
+}
+
+.btnLogout:hover {
+  color: #ffffff;
+  background-color: red;
+}
+
+/*efeito entrada menu*/
+@keyframes mostrarMenu {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/*link pagina*/
+.dropMenu a {
+  text-decoration: none;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .containerHeader {
+    width: 90vw;
+  }
+}

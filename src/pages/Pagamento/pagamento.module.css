@@ -1,0 +1,117 @@
+/* Estilo geral para a página */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Etapas de navegação */
+.steps {
+  display: flex;
+  justify-content: space-around; /* Distribui as etapas igualmente */
+  margin-bottom: 20px;
+  position: relative; /* Alinha a linha horizontal corretamente */
+}
+
+/* Estilo de cada etapa */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Necessário para que a linha apareça dentro da etapa */
+  z-index: 1; /* Coloca as etapas acima da linha verde */
+}
+
+/* Círculo de cada etapa */
+.circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* Torna o círculo redondo */
+  background-color: #ddd;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nome da etapa */
+.label {
+  margin-top: 5px; /* Espaço entre o círculo e o nome da etapa */
+  font-size: 14px;
+  color: #333;
+}
+
+/* Linha verde atrás das etapas */
+.steps::before {
+  content: ""; /* Adiciona conteúdo vazio para criar a linha */
+  position: absolute;
+  top: 40%; /* Alinha verticalmente a linha com as etapas */
+  left: 10%; /* Margem esquerda */
+  width: 80%; /* Largura da linha */
+  height: 3px; /* Espessura da linha */
+  background-color: #008000; /* Cor verde */
+  z-index: 0; /* Garante que a linha fique atrás das etapas */
+  transform: translateY(-50%); /* Centraliza a linha verticalmente */
+}
+
+/* Estilo da linha verde para etapas ativas */
+.step.active::before {
+  background-color: #008000; /* Muda a cor para verde quando a etapa está ativa */
+}
+
+/* Estilo do círculo e nome da etapa quando ela está ativa */
+.active .circle {
+  background-color: #008000; /* Muda a cor do círculo para verde */
+}
+
+.active .label {
+  color: #008000; /* Muda a cor do nome da etapa para verde */
+}
+
+/* Estilo de cada botão */
+.button {
+  padding: 10px 20px;
+  background-color: #008000; /* Cor de fundo do botão */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: background-color 0.3s; /* Transição suave na cor de fundo */
+}
+
+/* Efeito hover no botão */
+.button:hover {
+  background-color: #096e09; /* Muda a cor para um tom mais escuro de verde */
+}
+
+/* Estilo para botão desabilitado */
+.disabled {
+  background-color: #ccc; /* Cor do fundo para botão desabilitado */
+  cursor: not-allowed; /* Muda o cursor para indicar que não pode ser clicado */
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+/* Títulos principais */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: "#333";
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+/*titulo detalhes do pagamento*/
+.title2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: "#333";
+  margin: 15px 0;
+}

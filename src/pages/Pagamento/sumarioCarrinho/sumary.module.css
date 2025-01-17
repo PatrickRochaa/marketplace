@@ -1,0 +1,114 @@
+/* Exibição do carrinho - Mobile First */
+.cartSummary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Estilo dos itens no carrinho */
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%; /* Garante que os itens ocupem toda a largura disponível */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilo da imagem do item */
+.itemImage {
+  width: 80px; /* Ajuste para imagem menor em telas pequenas */
+  height: auto;
+}
+
+/*Nome - Quantidade - Valor*/
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo para o total do carrinho */
+.total {
+  display: flex;
+  gap: 10px;
+  align-self: center;
+  padding-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: right;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.total h4 {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/* Dados da entrega - mobile first */
+.deliveryInfo {
+  margin-top: 30px;
+  text-align: left;
+  padding-bottom: 15px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Parágrafo de informações de entrega */
+.texto {
+  display: flex;
+  flex-direction: column; /* Empilha os dados */
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Separador dos dados */
+.separadorTraco,
+.separadorVirgula {
+  display: none;
+}
+
+/* Responsividade para dispositivos maiores (tablets até 1024px) */
+@media (min-width: 768px) {
+  .itemImage {
+    width: 100px; /* Ajuste da imagem para telas maiores */
+  }
+
+  .total {
+    font-size: 1.1rem;
+  }
+
+  /* Parágrafo de informações de entrega */
+  .texto {
+    flex-direction: row; /* Coloca os itens em linha */
+    text-align: center; /* Centraliza o texto */
+    flex-wrap: wrap; /* Permite quebrar linha se necessário */
+    align-items: center; /* Garante que os itens fiquem centralizados */
+    justify-content: center; /* Garante que o conteúdo de cada linha fique centralizado */
+  }
+
+  /* Separador dos dados */
+  .separadorTraco {
+    display: inline-block; /* Muda para inline-block para os separadores ficarem na mesma linha */
+    margin: 0 4px; /* Adiciona um espaçamento entre os separadores */
+  }
+
+  .separadorVirgula {
+    display: inline-block;
+    margin-right: 2px;
+  }
+}
+
+/* Responsividade para telas grandes (desktops) */
+@media (min-width: 1024px) {
+  .itemImage {
+    width: 120px; /* Imagem ainda maior para telas grandes */
+  }
+}

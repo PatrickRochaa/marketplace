@@ -1,0 +1,164 @@
+/*container total do upload*/
+.containerUpload {
+  width: 90vw;
+  max-width: 900px;
+  padding: 0.75rem /* 12px */;
+  border-radius: 0.5rem /* 8px */;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem /* 12px */;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 0 0 8px white;
+}
+
+/*container para simbolizar upload*/
+.btnUpload {
+  width: 12rem /* 192px */;
+  height: 8rem /* 128px */;
+  border-radius: 0.5rem /* 8px */;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #4b5563;
+}
+
+/*container dos botao de envio*/
+.containerBtn {
+  position: absolute;
+  cursor: pointer;
+}
+
+/*botao de envio*/
+.uploadImg {
+  cursor: pointer;
+}
+
+/*botao de envio*/
+.inputUpload {
+  opacity: 0;
+  cursor: pointer;
+}
+
+/*container de previem da img*/
+.containerImg {
+  width: 100%;
+  height: 8rem /* 128px */;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/*botao de deletar img*/
+.btnDelete {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/*preview das img que vao ser enviadas*/
+.imgPreview {
+  width: 100%;
+  border-radius: 5px;
+  height: 7rem;
+  object-fit: cover;
+}
+
+/*container do cadastro de produto*/
+.principal {
+  width: 90vw;
+  max-width: 900px;
+  padding: 0.75rem /* 12px */;
+  border-radius: 0.5rem /* 8px */;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem /* 8px */;
+  margin-top: 2rem /* 16px */;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 0 0 8px white;
+}
+
+/*form de cadastro dos produtos*/
+.formulario {
+  width: 100%;
+  padding: 5px;
+}
+
+/*divisao dosw campos*/
+.divisaoLabel {
+  width: 100%;
+  margin-bottom: 1rem /* 16px */;
+}
+
+/*label do input*/
+.label {
+  margin-bottom: 5px;
+}
+
+/*campo que vai ser digitado info*/
+.input {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/*botao cadastro do produto*/
+.btnCadastrar {
+  width: 100%;
+  background-color: #008000;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.btnCadastrar:hover {
+  background-color: #096e09;
+  transform: scale(1.05);
+}
+
+/*descriçao completa*/
+.full_description {
+  width: 100%;
+  height: 6rem /* 96px */;
+  border: 1px solid #ccc;
+  padding: 0px 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/*alerta descriçao completa*/
+.descriptionAlert {
+  margin: 8px 0;
+  color: #fff;
+  background-color: #ef4444;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+@media (min-width: 640px) {
+  .containerUpload {
+    flex-direction: row;
+  }
+
+  .principal {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .btnUpload {
+    width: 12rem /* 192px */;
+  }
+}

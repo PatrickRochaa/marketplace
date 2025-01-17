@@ -1,0 +1,22 @@
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorContainer {
+  margin: 60px 0px;
+  text-align: center;
+  color: #d9534f; /* Vermelho para indicar erro */
+}
+
+.errorIcon {
+  font-size: 3rem; /* Tamanho grande para o ícone */
+  margin-bottom: 0.5rem;
+}
+
+.errorMessage {
+  font-size: 1rem;
+  font-weight: bold;
+}

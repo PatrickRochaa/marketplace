@@ -1,0 +1,277 @@
+/* Responsividade primeiro: estilo base para dispositivos móveis */
+.dashboard {
+  display: flex;
+  flex-direction: column; /* Coloca a sidebar acima do conteúdo principal */
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  border: 1px solid #ddd; /* Borda leve para destacar o contêiner */
+  border-radius: 8px; /* Borda arredondada para um visual mais suave */
+}
+
+/* Sidebar (menu lateral) */
+.sidebar {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Sidebar ocupa toda a largura em dispositivos móveis */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0;
+}
+
+/* Cabeçalho da sidebar */
+.sidebarHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebarHeader h2 {
+  font-size: 1.5rem;
+}
+
+/* Lista de navegação na sidebar */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #adb5bd; /* Texto cinza claro */
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Hover nos links da sidebar */
+.sidebar ul li a:hover {
+  background-color: #495057; /* Destaque no hover */
+  color: #fff; /* Texto branco */
+}
+
+/* Conteúdo principal */
+.mainContent {
+  flex: 1; /* Preenche o restante do espaço disponível */
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-top: 20px; /* Espaço entre a sidebar e o conteúdo principal */
+  transform: translateY(20px);
+  opacity: 0;
+  animation: FadeIn 0.8s forwards;
+}
+
+/* Animação da entrada */
+@keyframes FadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Título Principal */
+.title {
+  font-size: 2rem;
+  color: #333;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+  border: none;
+  width: 100%;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 80px;
+  height: 3px;
+  background-color: #008000;
+  border-radius: 2px;
+}
+
+/*Mensagem de compras ta vazia*/
+.alert {
+  font-size: 1.25rem;
+  margin: 15px 0px;
+  color: #333;
+}
+
+/* Estilos da Tabela */
+.salesTable {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: tableFadeIn 0.8s forwards;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animação da tabela (quando a página é carregada) */
+@keyframes tableFadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de fade-out */
+@keyframes FadeOut {
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* Adiciona o efeito de fade-out na tabela */
+.fadeOut {
+  animation: FadeOut 1s forwards;
+}
+
+.salesTable th,
+.salesTable td {
+  padding: 10px 6px;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #f1f1f1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cabeçalho da Tabela */
+.salesTable th {
+  background-color: #008000;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Estilo das células da Tabela */
+.salesTable td {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Estilos do total comprado com a animação */
+.totalComprado {
+  width: 100%;
+  font-size: 1.2rem;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: totalCompradoFadeIn 0.8s forwards;
+}
+
+/* Animação para o total Comprado */
+@keyframes totalCompradoFadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* container da paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: totalCompradoFadeIn 2s forwards;
+}
+
+/* Botões de paginação */
+.pagination button {
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: 1px solid #008000;
+  border-radius: 50px;
+  background-color: #008000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.pagination button.active {
+  background-color: #008000;
+  color: white;
+  border-color: #008000;
+}
+
+.pagination button:not(.active) {
+  background-color: #f0f0f0; /* Cor mais leve para não selecionados */
+  color: #aaa; /* Cor mais suave para não selecionados */
+  transition: background-color 0.5s, color 0.5s; /* Adiciona a transição */
+}
+
+/* Setas de paginação */
+button.arrowButton {
+  color: #008000;
+  transition: background-color 0.5s, color 0.5s; /* Adiciona a transição */
+}
+
+.pagination button:not(.active):hover,
+button.arrowButton:hover {
+  background-color: #008000;
+  color: white;
+}
+
+/* Ajustes para tablets e telas maiores */
+@media (min-width: 768px) {
+  .dashboard {
+    flex-direction: row; /* Coloca a sidebar ao lado do conteúdo principal */
+    max-width: 900px;
+  }
+
+  .sidebar {
+    flex: 0 0 250px; /* Define o tamanho fixo para a sidebar */
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px; /* Remove a borda inferior esquerda */
+  }
+
+  .mainContent {
+    margin-top: 0;
+  }
+
+  .salesTable {
+    font-size: 0.9rem;
+  }
+
+  .salesTable th,
+  .salesTable td {
+    padding: 12px 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .salesTable {
+    font-size: 1rem;
+    max-width: 900px;
+  }
+
+  .salesTable th,
+  .salesTable td {
+    padding: 16px;
+  }
+}

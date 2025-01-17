@@ -1,0 +1,209 @@
+/*link detail*/
+.linkDetail {
+  text-decoration: none;
+}
+
+/*Nome Site*/
+.tituloTopo {
+  margin-top: 10px;
+  color: #333;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.8rem;
+  border: 0;
+}
+
+/* Container pesquisa e filtro */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribui o espaço entre a pesquisa e o filtro */
+  max-width: 800px; /* Tamanho máximo para o cabeçalho */
+  gap: 10px; /* Espaçamento entre a pesquisa e o filtro */
+  margin: auto; /* Centraliza o cabeçalho */
+}
+
+/* Barra de Pesquisa */
+.search_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 200%;
+  margin-right: 10px;
+}
+
+/*input de pesquisa*/
+.search_input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.search_input::placeholder {
+  color: #aaa;
+}
+
+/*container option*/
+.categorySelect {
+  height: 50px;
+  margin-left: 5px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 20px auto;
+}
+
+/*subtitulo*/
+.subTitulo {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: #333;
+  text-align: center;
+}
+
+/* Container dos produtos */
+.products_container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  ); /* Responsivo, ocupa toda a tela */
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: FadeIn 0.8s forwards;
+}
+
+/* Animação da entrada */
+@keyframes FadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Card de produto */
+.product_card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do produto */
+.product_card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product_card img:hover {
+  transform: scale(1.05);
+}
+
+/* Nome do produto */
+.product_card .name {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+  margin: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Descrição do produto */
+.product_card .description {
+  font-size: 0.9rem;
+  color: #777;
+  padding: 0 15px;
+  margin: 0 0 10px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a descrição a 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Preço do produto */
+.product_card .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #008000; /* Cor verde para o preço */
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Botão de compra */
+.product_card .btnCompra {
+  background-color: #008000;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.product_card .btnCompra:hover {
+  background-color: #006400;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .products_container {
+    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+  }
+}
+
+@media (min-width: 768px) {
+  .products_container {
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas em telas médias */
+  }
+  .search_form {
+    width: 300%;
+  }
+}
+
+@media (min-width: 992px) {
+  .products_container {
+    grid-template-columns: repeat(3, 1fr); /* Três colunas em telas grandes */
+  }
+}
+
+@media (min-width: 1200px) {
+  .products_container {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* Quatro colunas em telas muito grandes */
+  }
+}

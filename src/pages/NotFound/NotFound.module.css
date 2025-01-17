@@ -1,0 +1,99 @@
+/* Estilos básicos para telas pequenas (Mobile First) */
+.notFoundContainer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 50px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.logo {
+  max-width: 150px; /* Logo menor em dispositivos móveis */
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 1.6rem; /* Tamanho da fonte adaptado para mobile */
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.message {
+  font-size: 1rem; /* Tamanho menor para mobile */
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.icon img {
+  max-width: 120px; /* Ícone menor em dispositivos móveis */
+  margin-bottom: 20px;
+}
+
+/* Estilo básico para o container dos ícones */
+.iconsContainer {
+  display: flex;
+  justify-content: space-around; /* Distribui os ícones igualmente */
+  margin: 30px 0px; /* Espaço entre o texto e os ícones */
+}
+
+.icon {
+  font-size: 50px; /* Tamanho dos ícones */
+  color: #333; /* Cor dos ícones */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito de hover nos ícones */
+.icon:hover {
+  transform: scale(1.1); /* Aumenta um pouco o tamanho */
+}
+
+/* Estilos para telas maiores (Tablet e Desktop) */
+@media (min-width: 768px) {
+  .notFoundContainer {
+    padding: 40px 20px; /* Mais espaçamento em telas maiores */
+    border-radius: 8px;
+    margin-top: 0px;
+  }
+  .logo {
+    max-width: 200px; /* Aumentando o tamanho da logo em telas maiores */
+  }
+
+  .title {
+    font-size: 2rem; /* Tamanho maior para o título */
+  }
+
+  .message {
+    font-size: 1.2rem; /* Aumentando o tamanho da mensagem */
+  }
+
+  .icon img {
+    max-width: 150px; /* Aumentando o ícone */
+  }
+}
+
+/* Estilos para telas muito grandes (Desktops grandes ou TV) */
+@media (min-width: 1200px) {
+  .notFoundContainer {
+    padding: 60px 80px; /* Aumentando o padding para telas grandes */
+  }
+
+  .title {
+    font-size: 2rem; /* Maior título para telas grandes */
+  }
+
+  .message {
+    font-size: 1.4rem; /* Maior mensagem */
+  }
+
+  .icon img {
+    max-width: 180px; /* Ícone maior em telas muito grandes */
+  }
+}

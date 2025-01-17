@@ -1,0 +1,247 @@
+/* Contêiner principal do cartão de crédito */
+.creditCardContainer {
+  display: flex;
+  flex-direction: column; /* Organização em coluna para telas menores */
+  justify-content: space-between;
+  background-color: #f5fff5; /* Fundo claro com tom verde */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  align-items: center;
+}
+
+.cardInputs {
+  flex: 1;
+  margin-right: 20px; /* Espaço entre inputs e preview */
+}
+
+/* Estilização dos inputs do formulário */
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #008000; /* Borda verde */
+  border-radius: 5px; /* Cantos arredondados */
+  font-size: 16px;
+}
+
+.cardDetails {
+  gap: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Contêiner do cartão */
+.cardPreview {
+  width: 300px;
+  height: 180px;
+  perspective: 1000px; /* Necessário para o efeito 3D */
+  position: relative;
+}
+
+/* Estilo base do cartão */
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 15px;
+  transform-style: preserve-3d; /* Mantém a profundidade dos elementos filhos */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Frente do cartão */
+.cardFront,
+.cardBack {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde o outro lado */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
+
+/* Frente do cartão */
+.cardFront {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  z-index: 2;
+  background: -webkit-linear-gradient(
+    127deg,
+    #00ff7f,
+    #006400,
+    #00a000,
+    #006400,
+    #006400,
+    #00ff7f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    127deg,
+    #00ff7f,
+    #006400,
+    #00a000,
+    #006400,
+    #006400,
+    #00ff7f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 0px 4px 15px rgba(0, 255, 127, 0.5); /* Brilho */
+}
+
+/* Verso do cartão */
+.cardBack {
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
+  background: -webkit-linear-gradient(
+    127deg,
+    #00ff7f,
+    #006400,
+    #00a000,
+    #006400,
+    #00ff7f,
+    #006400,
+    #00ff7f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    127deg,
+    #00ff7f,
+    #006400,
+    #00a000,
+    #006400,
+    #00ff7f,
+    #006400,
+    #00ff7f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 0px 4px 15px rgba(0, 255, 127, 0.5); /* Brilho */
+}
+
+/* Tarja preta do cartão */
+.blackBar {
+  background-color: black; /* Fundo preto */
+  height: 40px; /* Altura da tarja */
+  width: 100%; /* Largura total do cartão */
+  border-radius: 5px; /* Cantos levemente arredondados */
+  margin-bottom: 20px; /* Espaçamento abaixo da tarja */
+}
+
+/* Contêiner para o CVV */
+.cvvContainer {
+  background-color: white; /* Fundo branco para o CVV */
+  height: 30px; /* Altura do contêiner */
+  width: 80%; /* Largura proporcional do contêiner */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  border-radius: 5px; /* Cantos arredondados */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinha o CVV à direita */
+  padding-right: 10px; /* Espaço interno à direita */
+  color: black; /* Texto preto */
+  font-weight: bold; /* Deixa o texto do CVV em negrito */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra interna para profundidade */
+}
+
+/* Rotação do cartão */
+.flipped {
+  transform: rotateY(180deg); /* Aplica a rotação para mostrar o verso */
+}
+
+/* Bandeira do cartão */
+.cardLogo {
+  display: flex; /* Flexbox para alinhamento lado a lado */
+  align-items: center; /* Alinha verticalmente no centro */
+  gap: 10px; /* Espaço entre o logo e o nome */
+  font-size: 16px;
+  color: white;
+  justify-content: flex-end; /* Alinha o conteúdo à direita do cartão */
+  width: 100%; /* Garante que ocupe toda a largura disponível */
+  padding-right: 15px; /* Espaçamento da borda direita */
+}
+
+.cardLogo img {
+  width: 25px; /* Tamanho do logo */
+  height: auto;
+}
+
+.cardLogo span {
+  font-weight: bold;
+}
+
+/* Número do cartão */
+.cardNumber {
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 2px; /* Espaçamento entre os dígitos */
+  margin-top: 10px;
+}
+
+/* Nome do titular e validade do cartão */
+.cardHolder {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  text-transform: uppercase; /* Letras maiúsculas */
+}
+
+/* Mensagem de segurança */
+.cardSecure {
+  font-size: 12px;
+  color: #e0ffe0; /* Verde claro */
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0.8; /* Transparência */
+}
+
+/* Estilo para o select */
+.installmentsContainer select {
+  color: #008000;
+  border: 2px solid #008000;
+  border-radius: 8px; /* Borda arredondada */
+  padding: 12px 20px; /* Aumenta o tamanho do select */
+  font-size: 16px; /* Tamanho maior da fonte */
+  width: 100%; /* Ocupa toda a largura disponível */
+  transition: all 0.3s ease; /* Animação suave */
+  cursor: pointer;
+}
+
+/* Estilo ao focar no select */
+.installmentsContainer select:focus {
+  outline: none; /* Remove a borda padrão */
+  border-color: #218838; /* Cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Sombra verde ao focar */
+}
+
+/* Estilo da label */
+.installmentsContainer label {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+  display: block;
+}
+
+/* Estilo do container do select */
+.installmentsContainer {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.glowing {
+  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.6); /* Brilho verde */
+  transition: box-shadow 0.3s ease-in-out; /* Transição suave */
+}
+
+/* Layout adaptável para telas maiores */
+@media (min-width: 800px) {
+  .creditCardContainer {
+    flex-direction: row; /* Organizar inputs e preview lado a lado */
+  }
+}

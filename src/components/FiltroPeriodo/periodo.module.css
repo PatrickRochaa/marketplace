@@ -1,0 +1,76 @@
+/* Contêiner que alinha a label e o botão de seleção na horizontal */
+.periodoWrapper {
+  display: flex; /* Alinha os elementos horizontalmente */
+  align-items: center; /* Alinha os itens no eixo vertical */
+  justify-content: start; /* Alinha os itens no início do contêiner */
+  gap: 20px; /* Espaço entre a label e o select */
+  width: 100%; /* Largura total disponível */
+}
+
+/* Estilo para a label do campo de seleção */
+.label {
+  font-size: 16px; /* Define o tamanho da fonte */
+  font-weight: bold; /* Deixa a fonte em negrito */
+}
+
+/* Contêiner do botão de seleção, com posicionamento relativo para o dropdown */
+.selectWrapper {
+  position: relative; /* Necessário para o posicionamento absoluto do dropdown */
+  width: 200px; /* Largura do contêiner do botão, pode ser ajustada */
+}
+
+/* Estilo do botão de seleção, o item que é clicado para abrir as opções */
+.selected {
+  background-color: #f9f9f9; /* Cor de fundo do botão */
+  padding: 10px 15px; /* Espaçamento interno */
+  border: 1px solid #ccc; /* Borda do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Mostra o cursor de clique */
+  user-select: none; /* Impede a seleção de texto */
+  width: 100%; /* A largura do botão será a mesma do contêiner */
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no cálculo de largura */
+}
+
+/* Efeito de hover no botão de seleção */
+.selected:hover {
+  background-color: #e0e0e0; /* Altera a cor de fundo ao passar o mouse */
+}
+
+/* Estilo do dropdown (as opções que aparecem ao clicar no botão) */
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%; /* Garante que o dropdown tenha a mesma largura do .selected */
+  top: 100%; /* Posiciona o dropdown logo abaixo do .selected */
+  left: 0;
+  z-index: -10;
+  opacity: 0; /* Inicialmente invisível */
+  transform: translateY(-10px); /* Inicialmente deslocado para cima */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transição suave */
+}
+
+/* Classe adicional para quando o dropdown estiver visível */
+.options.open {
+  opacity: 1; /* Torna o dropdown visível */
+  transform: translateY(0); /* Restaura a posição */
+  max-height: 200px; /* Altura máxima do dropdown */
+  z-index: 20;
+}
+
+/* Estilo para cada opção no dropdown */
+.option {
+  padding: 10px 15px; /* Espaçamento interno das opções */
+  cursor: pointer; /* Mostra o cursor de clique nas opções */
+}
+
+/* Efeito de hover nas opções do dropdown */
+.option:hover {
+  background-color: #d4f1d4; /* Cor de fundo das opções ao passar o mouse */
+}
