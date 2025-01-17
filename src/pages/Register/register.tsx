@@ -69,7 +69,12 @@ export function Register() {
         });
 
       if (signUpError) {
-        throw signUpError;
+        if (signUpError.message.includes("User already registered")) {
+          // Se o erro for relacionado ao e-mail já registrado, exibe uma mensagem específica
+          throw new Error("Este e-mail já está cadastrado. Tente fazer login.");
+        } else {
+          throw signUpError;
+        }
       }
 
       // Pega o id do usuário recém-criado
@@ -115,7 +120,7 @@ export function Register() {
       if (tempCart.length > 0) {
         // Envia os produtos para o carrinho no banco de dados (Supabase)
         try {
-          const { error } = await supabase.from("carrinho").upsert(
+          const { data, error } = await supabase.from("carrinho").upsert(
             tempCart.map((item) => ({
               id_comprador: user.id,
               nome_comprador: item.name,
@@ -146,7 +151,7 @@ export function Register() {
       navigate("/dashboard");
     } catch (err) {
       console.error("Erro ao criar usuário:", err);
-      toast.error("Erro ao criar o usuário. Tente novamente.");
+      toast.error(err.message || "Erro ao criar o usuário. Tente novamente.");
     }
   };
 

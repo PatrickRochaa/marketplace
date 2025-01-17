@@ -66,7 +66,13 @@ export function Register() {
                 password: data.senha,
             });
             if (signUpError) {
-                throw signUpError;
+                if (signUpError.message.includes("User already registered")) {
+                    // Se o erro for relacionado ao e-mail já registrado, exibe uma mensagem específica
+                    throw new Error("Este e-mail já está cadastrado. Tente fazer login.");
+                }
+                else {
+                    throw signUpError;
+                }
             }
             // Pega o id do usuário recém-criado
             const user = signUpData === null || signUpData === void 0 ? void 0 : signUpData.user;
@@ -104,7 +110,7 @@ export function Register() {
             if (tempCart.length > 0) {
                 // Envia os produtos para o carrinho no banco de dados (Supabase)
                 try {
-                    const { error } = yield supabase.from("carrinho").upsert(tempCart.map((item) => ({
+                    const { data, error } = yield supabase.from("carrinho").upsert(tempCart.map((item) => ({
                         id_comprador: user.id,
                         nome_comprador: item.name,
                         produto_id: item.id,
@@ -131,7 +137,7 @@ export function Register() {
         }
         catch (err) {
             console.error("Erro ao criar usuário:", err);
-            toast.error("Erro ao criar o usuário. Tente novamente.");
+            toast.error(err.message || "Erro ao criar o usuário. Tente novamente.");
         }
     });
     return (_jsxs(Container, { children: [_jsx(Link, { to: "/", children: _jsx("img", { src: logoImg, alt: "Logo do site", className: styles.imgLogin }) }), _jsxs("form", { onSubmit: handleSubmit(onSubmit), className: styles.form, children: [_jsx("h1", { className: styles.titulo, children: "Cadastro" }), _jsx(Input, { type: "text", placeholder: "Informe seu nome", name: "nome", error: (_a = errors.nome) === null || _a === void 0 ? void 0 : _a.message, register: register }), _jsx(Input, { type: "email", placeholder: "Informe seu email", name: "email", error: (_b = errors.email) === null || _b === void 0 ? void 0 : _b.message, register: register }), _jsx(Input, { type: "password", placeholder: "Informe sua senha", name: "senha", error: (_c = errors.senha) === null || _c === void 0 ? void 0 : _c.message, register: register }), _jsx(Input, { type: "text", placeholder: "Telefone para contato", name: "telefone", error: (_d = errors.telefone) === null || _d === void 0 ? void 0 : _d.message, register: register }), _jsx(Input, { type: "text", placeholder: "Endere\u00E7o - Rua - Avenida - Logradouro", name: "endereco", error: (_e = errors.endereco) === null || _e === void 0 ? void 0 : _e.message, register: register }), _jsx(Input, { type: "text", placeholder: "N\u00BA da casa (bloco e apto, se for apartamento)", name: "numero_casa", error: (_f = errors.numero_casa) === null || _f === void 0 ? void 0 : _f.message, register: register }), _jsx(Input, { type: "text", placeholder: "Estado - Minas Gerais ou MG", name: "estado", error: (_g = errors.estado) === null || _g === void 0 ? void 0 : _g.message, register: register }), _jsx(Input, { type: "text", placeholder: "Bairro - Cidade", name: "cidade", error: (_h = errors.cidade) === null || _h === void 0 ? void 0 : _h.message, register: register }), _jsx(Input, { type: "text", placeholder: "CEP", name: "cep", error: (_j = errors.cep) === null || _j === void 0 ? void 0 : _j.message, register: register }), _jsx("button", { type: "submit", className: styles.btnRegister, children: "Cadastrar" }), _jsxs("p", { className: styles.login, children: ["J\u00E1 possui uma conta?", " ", _jsx(Link, { to: "/login", className: styles.linkLogin, children: "Fa\u00E7a login." })] })] })] }));

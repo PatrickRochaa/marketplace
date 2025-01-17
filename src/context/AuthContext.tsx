@@ -47,53 +47,52 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Verifica a sessão ativa ao carregar a aplicação
   useEffect(() => {
-  async function checkUser() {
-    try {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession();
-      if (error) throw new Error(error.message);
+    async function checkUser() {
+      try {
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
+        if (error) throw new Error(error.message);
 
-      if (session?.user) {
-        setUser({
-          id: session.user.id,
-          name: session.user.user_metadata.full_name || null,
-          email: session.user.email || null,
-          telefone: session.user.user_metadata.phone || null,
-        });
-      }
-    } catch (err) {
-      console.error("Erro ao verificar o usuário:", err);
-    } finally {
-      setLoadingAuth(false);
-    }
-  }
-
-  checkUser();
-
-  // Ouvinte de mudanças na autenticação
-  const { data: authSubscription } = supabase.auth.onAuthStateChange(
-    (_event, session) => {
-      if (session?.user) {
-        setUser({
-          id: session.user.id,
-          name: session.user.user_metadata.full_name || null,
-          email: session.user.email || null,
-          telefone: session.user.user_metadata.phone || null,
-        });
-      } else {
-        setUser(null); // Se não houver usuário, limpa o estado
+        if (session?.user) {
+          setUser({
+            id: session.user.id,
+            name: session.user.user_metadata.full_name || null,
+            email: session.user.email || null,
+            telefone: session.user.user_metadata.phone || null,
+          });
+        }
+      } catch (err) {
+        console.error("Erro ao verificar o usuário:", err);
+      } finally {
+        setLoadingAuth(false);
       }
     }
-  );
 
-  // Garantir que o listener seja removido corretamente ao desmontar o componente
-  return () => {
-    authSubscription.subscription?.unsubscribe?.();
-  };
-}, []);
+    checkUser();
 
+    // Ouvinte de mudanças na autenticação
+    const { data: authSubscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        if (session?.user) {
+          setUser({
+            id: session.user.id,
+            name: session.user.user_metadata.full_name || null,
+            email: session.user.email || null,
+            telefone: session.user.user_metadata.phone || null,
+          });
+        } else {
+          setUser(null); // Se não houver usuário, limpa o estado
+        }
+      }
+    );
+
+    // Garantir que o listener seja removido corretamente ao desmontar o componente
+    return () => {
+      authSubscription.subscription?.unsubscribe?.();
+    };
+  }, []);
 
   /* =============================================================== */
 
@@ -132,28 +131,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Realiza logout do usuário
   const handleLogout = async () => {
-  try {
-    // Realiza o logout do Supabase
-    await supabase.auth.signOut();
+    try {
+      // Realiza o logout do Supabase
+      await supabase.auth.signOut();
 
-    // Limpa o estado de usuário na aplicação
-    setUser(null);
+      // Limpa o estado de usuário na aplicação
+      setUser(null);
 
-    // Limpa todos os dados do sessionStorage
-    sessionStorage.clear(); // Remove todas as chaves do sessionStorage
+      // Limpa todos os dados do sessionStorage
+      sessionStorage.clear(); // Remove todas as chaves do sessionStorage
 
-    // Opcional: Verifica apenas se houve erro na sessão
-    const { error } = await supabase.auth.getSession();
-    if (error) {
-      console.error("Erro ao atualizar a sessão:", error.message);
+      // Opcional: Forçar a atualização da sessão
+      const { error } = await supabase.auth.getSession();
+      toast.success("Voce saiu! Até breve!");
+      if (error) {
+        // console.error("Erro ao atualizar a sessão:", error.message);
+      } else {
+        // console.log("Sessão após logout:", session);
+      }
+    } catch {
+      // console.error("Erro ao deslogar:", err);
     }
-
-    toast.success("Você saiu! Até breve!");
-  } catch {
-    //console.error("Erro ao deslogar:", err);
-  }
-};
-
+  };
 
   /* =============================================================== */
 

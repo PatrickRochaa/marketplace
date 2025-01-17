@@ -107,15 +107,18 @@ export function AuthProvider({ children }) {
             setUser(null);
             // Limpa todos os dados do sessionStorage
             sessionStorage.clear(); // Remove todas as chaves do sessionStorage
-            // Opcional: Verifica apenas se houve erro na sessão
+            // Opcional: Forçar a atualização da sessão
             const { error } = yield supabase.auth.getSession();
+            toast.success("Voce saiu! Até breve!");
             if (error) {
-                console.error("Erro ao atualizar a sessão:", error.message);
+                // console.error("Erro ao atualizar a sessão:", error.message);
             }
-            toast.success("Você saiu! Até breve!");
+            else {
+                // console.log("Sessão após logout:", session);
+            }
         }
         catch (_a) {
-            //console.error("Erro ao deslogar:", err);
+            // console.error("Erro ao deslogar:", err);
         }
     });
     /* =============================================================== */

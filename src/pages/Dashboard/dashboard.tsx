@@ -141,7 +141,7 @@ export function Dashboard() {
               products.map((product) => (
                 <div key={product.id} className={styles.productCard}>
                   <FallbackImage
-                    src={product.images[0]?.src[0] || ""}
+                    src={String(product.images[0])}
                     alt={product.name}
                     className={styles.productImage}
                     errorMessage="Imagem indisponível."
