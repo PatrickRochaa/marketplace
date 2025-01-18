@@ -3,6 +3,14 @@
   text-decoration: none;
 }
 
+/*Container para propaganda*/
+.propaganda {
+  width: 100%;
+  max-width: 800px;
+  height: 150px;
+  position: relative;
+}
+
 /*Nome Site*/
 .tituloTopo {
   margin-top: 10px;

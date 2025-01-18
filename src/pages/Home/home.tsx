@@ -21,6 +21,8 @@ import { useCart } from "../../context/CartContext"; //contexto do carrinho
 
 import { Skeleton } from "../../components/SkeletonProdutos/skeletonProdutos";
 
+import { Propaganda } from "../../components/Propaganda/propaganda";
+
 export function Home() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>([]);
@@ -178,8 +180,10 @@ export function Home() {
 
   return (
     <Container>
+      <div className={styles.propaganda}>
+        <Propaganda />
+      </div>
       <h1 className={styles.tituloTopo}>Marketplace Fake</h1>
-
       {/* Cabeçalho */}
       <header className={styles.header}>
         {/* Barra de pesquisa */}
