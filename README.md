@@ -1,3 +1,5 @@
+
+
 MarketPlace Falso 🛒
 
 Este é um marketplace fictício, desenvolvido com React e TypeScript, que oferece uma experiência moderna, interativa e responsiva para usuários que desejam cadastrar, gerenciar e adquirir produtos.
@@ -31,13 +33,21 @@ Este projeto foi desenvolvido com a colaboração do ChatGPT, que forneceu orien
 🚀 Tecnologias Utilizadas
 
 • React
+
 • TypeScript
+
 • React Hook Form
+
 • Zod
+
 • React Hot Toast
+
 • React Icons
+
 • React Confetti
+
 • SwiperJS
+
 • Supabase
 
 🛠 Como Funciona
