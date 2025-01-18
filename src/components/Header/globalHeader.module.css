@@ -1,99 +1,111 @@
-/*container Header*/
+/* Estilo geral do cabeçalho */
 .containerHeader {
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
-  height: 4rem /* 64px */;
-  margin-bottom: 1rem /* 16px */;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
+  width: 100%; /* Cabeçalho ocupa toda a largura disponível */
+  max-width: 900px; /* Largura máxima do cabeçalho */
+  display: flex; /* Usando Flexbox para alinhar os itens */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  justify-content: space-between; /* Distribui os itens igualmente entre as extremidades */
+  padding: 0 50px; /* Espaçamento interno (padding) nas laterais */
+  height: 4rem; /* Altura do cabeçalho */
+  margin-bottom: 1rem; /* Espaço abaixo do cabeçalho */
+  background-color: #fff; /* Cor de fundo branca */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidade */
+  position: relative; /* Para permitir o posicionamento do menu suspenso */
 }
 
-/*imagem header*/
+/* Estilo da imagem do logo */
 .imgHeader {
-  display: block;
-  width: 80px;
-  border-radius: 8px;
+  display: block; /* Remove qualquer espaço em branco abaixo da imagem */
+  width: 80px; /* Define a largura do logo */
+  border-radius: 8px; /* Bordas arredondadas */
 }
 
-/*container icone Header*/
+/* Estilo para o botão de login */
 .login {
-  border: 2px solid #333;
-  border-radius: 9999px;
-  padding: 0.5rem /* 4px */;
-  z-index: 10;
-  width: 2.5rem /* 40px */;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem /* 8px */;
-  cursor: pointer;
+  border: 2px solid #333; /* Borda cinza escura */
+  border-radius: 9999px; /* Bordas totalmente arredondadas (efeito circular) */
+  padding: 0.5rem; /* Espaçamento interno do botão */
+  z-index: 10; /* Garante que o botão fique acima de outros elementos */
+  width: auto; /* Largura automática */
+  display: flex; /* Alinha os itens dentro do botão */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  justify-content: center; /* Alinha os itens horizontalmente ao centro */
+  gap: 0.5rem; /* Espaçamento entre os itens dentro do botão */
+  margin-bottom: 0.5rem; /* Espaço abaixo do botão */
+  cursor: pointer; /* Cursor de mãozinha ao passar sobre o botão */
+  position: relative; /* Permite o posicionamento relativo em relação ao contêiner */
 }
 
-/*menu*/
+/* Estilo do menu suspenso (dropMenu) */
 .dropMenu {
-  position: absolute;
-  right: 0px;
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  margin-top: 15px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  animation: mostrarMenu 0.5s ease forwards;
-  z-index: 10;
+  position: absolute; /* Posiciona o menu de forma absoluta dentro do cabeçalho */
+  right: 0px; /* Posiciona o menu à direita do contêiner */
+  background-color: #ffffff; /* Cor de fundo branca */
+  border: 2px solid #ccc; /* Borda cinza clara */
+  border-radius: 6px; /* Bordas arredondadas */
+  margin-top: 15px; /* Espaço entre o botão de login e o menu */
+  padding: 8px; /* Espaçamento interno */
+  display: flex; /* Usa Flexbox para alinhar os itens verticalmente */
+  flex-direction: column; /* Alinha os itens em coluna */
+  gap: 10px; /* Espaço entre os itens do menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para o menu */
+
+  /* Inicialmente, o menu está oculto */
+  opacity: 0; /* O menu é invisível */
+  visibility: hidden; /* O menu não é interativo quando invisível */
+  transform: translateY(-20px); /* Move o menu para cima, fora da tela */
+
+  /* Transições suaves para a abertura e fechamento do menu */
+  transition: opacity 1s ease, transform 1s ease, visibility 0s linear 1s; /* A duração das transições foi aumentada para 1s e o delay foi adicionado para o fechamento do menu */
+  z-index: 10; /* Garante que o menu apareça acima de outros elementos */
 }
 
+/* Estilo quando o menu estiver aberto */
+.dropMenu.menuOpen {
+  opacity: 1; /* O menu se torna visível */
+  visibility: visible; /* O menu pode ser interativo */
+  transform: translateY(0); /* Coloca o menu de volta em sua posição original */
+
+  /* Transições para o menu abrir */
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Reduzimos a duração para 0.8s quando o menu está aberto */
+}
+
+/* Estilo dos botões do menu */
 .btnMenu {
-  border-radius: 5px;
-  padding: 5px;
-  transition: background-color 0.5s ease-in-out;
+  border-radius: 5px; /* Bordas arredondadas para os botões */
+  padding: 5px; /* Espaçamento interno dos botões */
+  transition: background-color 0.5s ease-in-out; /* Transição suave para a cor de fundo */
 }
 
+/* Estilo do botão ao passar o mouse sobre ele */
 .btnMenu:hover {
-  background-color: #d4f1d4;
+  background-color: #d4f1d4; /* Cor de fundo quando o mouse passa sobre o botão */
 }
 
+/* Estilo do botão de logout */
 .btnLogout {
-  color: red;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 5px;
-  transition: background-color 0.8s ease-in-out;
+  color: red; /* Cor do texto vermelha */
+  font-weight: bold; /* Texto em negrito */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 5px; /* Espaçamento interno */
+  transition: background-color 0.8s ease-in-out; /* Transição suave para a cor de fundo */
 }
 
+/* Estilo do botão de logout ao passar o mouse sobre ele */
 .btnLogout:hover {
-  color: #ffffff;
-  background-color: red;
+  color: #ffffff; /* Cor do texto branca quando o mouse passa */
+  background-color: red; /* Cor de fundo vermelha quando o mouse passa */
 }
 
-/*efeito entrada menu*/
-@keyframes mostrarMenu {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -20px, 0) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-/*link pagina*/
+/* Removendo o sublinhado dos links no menu */
 .dropMenu a {
-  text-decoration: none;
-  color: #333;
+  text-decoration: none; /* Remove o sublinhado */
+  color: #333; /* Cor do texto */
 }
 
+/* Estilo para telas menores (responsivo) */
 @media (max-width: 768px) {
   .containerHeader {
-    width: 90vw;
+    width: 90vw; /* Reduz a largura do cabeçalho para 90% da largura da tela em dispositivos menores */
   }
 }

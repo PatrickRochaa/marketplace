@@ -1,96 +1,107 @@
-import logoImg from "../../assets/logo.png";
-import styles from "./globalHeader.module.css";
-import { Container } from "../Container/container";
-import { Link } from "react-router-dom";
-import { FiUser, FiLogIn } from "react-icons/fi"; // Ícones do React Icons
-import { useRef, useState, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext"; // Contexto usuario
+import logoImg from "../../assets/logo.png"; // Importa a imagem do logo
+import styles from "./globalHeader.module.css"; // Importa os estilos CSS do cabeçalho
+
+import { Container } from "../Container/container"; // Importa o componente Container
+import { Link } from "react-router-dom"; // Importa o Link para navegação
+import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2"; // Ícone para usuário deslogado
+import { PiUserList } from "react-icons/pi"; // Ícone para usuário logado
+
+import { useRef, useState, useEffect } from "react"; // Importa hooks do React
+import { useAuth } from "../../context/AuthContext"; // Importa contexto de autenticação
 
 export function GlobalHeader() {
-  const { signed, loadingAuth, handleLogout } = useAuth(); // Contexto de autenticação
-  const [menuOpen, setMenuOpen] = useState(false); // Controla o estado do menu
-  const menuRef = useRef<HTMLDivElement | null>(null); // Ref para o menu
+  // Desestruturação dos valores do contexto de autenticação
+  const { signed, loadingAuth, handleLogout } = useAuth();
 
-  //context do carrinho de compras para limparo carrinho que fizer Logout
-  // const { cartItems } = useCart();
+  // Estado para controlar a visibilidade do menu
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Fecha o menu se clicar fora dele
+  // Refs para referenciar elementos DOM
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLDivElement | null>(null);
+
+  // Efeito para detectar clique fora do menu e fechá-lo
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setMenuOpen(false); // Fecha o menu se o clique for fora
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside); // Adiciona evento de clique
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside); // Limpa evento ao desmontar
     };
   }, []);
 
-  // Não exibe nada até que o carregamento esteja completo
-  if (loadingAuth) {
-    return null;
-  }
+  // Função para alternar a visibilidade do menu
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  // Função que alterna o estado da variável que controla se o menu está aberto
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
+  if (loadingAuth) {
+    return null; // Retorna null enquanto a autenticação está carregando
+  }
 
   return (
     <Container>
       <header className={styles.containerHeader}>
         <Link to="/">
-          <img src={logoImg} alt="Logo do site" className={styles.imgHeader} />
+          {" "}
+          {/* Link para a página inicial */}
+          <img
+            src={logoImg}
+            alt="Logo do site"
+            className={styles.imgHeader}
+          />{" "}
+          {/* Logo */}
         </Link>
 
-        {signed ? (
+        {signed ? ( // Se o usuário estiver autenticado, exibe o menu de usuário
           <div className={styles.userMenu}>
-            {/* Ícone de usuário logado */}
-            <div className={styles.login} onClick={toggleMenu}>
-              <FiUser size={20} color="#000" />
+            <div className={styles.login} onClick={toggleMenu} ref={buttonRef}>
+              <PiUserList size={24} color="#000" />{" "}
+              {/* Ícone de usuário logado */}
             </div>
 
-            {menuOpen && ( // Sub-menu
-              <div ref={menuRef} className={styles.dropMenu}>
-                <Link
-                  to="/dashboard"
-                  onClick={() => setMenuOpen(false)} // Fecha o menu ao clicar
-                >
-                  <p className={styles.btnMenu}>Dashboard</p>
-                </Link>
-                <Link
-                  to="/dashboard/new"
-                  onClick={() => setMenuOpen(false)} // Fecha o menu ao clicar
-                >
-                  <p className={styles.btnMenu}>Novo Produto</p>
-                </Link>
-
-                <Link
-                  to="/cart"
-                  onClick={() => setMenuOpen(false)} // Fecha o menu ao clicar
-                >
-                  <p className={styles.btnMenu}>Carrinho</p>
-                </Link>
-
-                <Link
-                  to="/"
-                  onClick={() => {
-                    handleLogout(); // Realiza o logout
-                    setMenuOpen(false); // Fecha o menu
-                  }}
-                >
-                  <p className={styles.btnLogout}>Sair</p>
-                </Link>
-              </div>
-            )}
+            <div
+              ref={menuRef}
+              className={`${styles.dropMenu} ${
+                menuOpen ? styles.menuOpen : "" // Aplica a classe 'menuOpen' se o menu estiver aberto
+              }`}
+            >
+              <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+                <p className={styles.btnMenu}>Dashboard</p>{" "}
+                {/* Link para o painel de controle */}
+              </Link>
+              <Link to="/dashboard/new" onClick={() => setMenuOpen(false)}>
+                <p className={styles.btnMenu}>Novo Produto</p>{" "}
+                {/* Link para adicionar novo produto */}
+              </Link>
+              <Link to="/cart" onClick={() => setMenuOpen(false)}>
+                <p className={styles.btnMenu}>Carrinho</p>{" "}
+                {/* Link para o carrinho */}
+              </Link>
+              <Link
+                to="/"
+                onClick={() => {
+                  handleLogout(); // Chama a função de logout
+                  setMenuOpen(false); // Fecha o menu após logout
+                }}
+              >
+                <p className={styles.btnLogout}>Sair</p> {/* Link para sair */}
+              </Link>
+            </div>
           </div>
         ) : (
+          // Se o usuário não estiver autenticado, exibe o botão de login
           <Link to="/login">
-            {/* Ícone de usuário deslogado */}
             <div className={styles.login}>
-              <FiLogIn size={20} color="#000" />
+              <HiOutlineArrowRightOnRectangle size={24} color="#000" />{" "}
+              {/* Ícone de login */}
             </div>
           </Link>
         )}
@@ -99,4 +110,4 @@ export function GlobalHeader() {
   );
 }
 
-export default GlobalHeader;
+export default GlobalHeader; // Exporta o componente GlobalHeader

@@ -1,41 +1,47 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import logoImg from "../../assets/logo.png";
-import styles from "./globalHeader.module.css";
-import { Container } from "../Container/container";
-import { Link } from "react-router-dom";
-import { FiUser, FiLogIn } from "react-icons/fi"; // Ícones do React Icons
-import { useRef, useState, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext"; // Contexto usuario
+import logoImg from "../../assets/logo.png"; // Importa a imagem do logo
+import styles from "./globalHeader.module.css"; // Importa os estilos CSS do cabeçalho
+import { Container } from "../Container/container"; // Importa o componente Container
+import { Link } from "react-router-dom"; // Importa o Link para navegação
+import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2"; // Ícone para usuário deslogado
+import { PiUserList } from "react-icons/pi"; // Ícone para usuário logado
+import { useRef, useState, useEffect } from "react"; // Importa hooks do React
+import { useAuth } from "../../context/AuthContext"; // Importa contexto de autenticação
 export function GlobalHeader() {
-    const { signed, loadingAuth, handleLogout } = useAuth(); // Contexto de autenticação
-    const [menuOpen, setMenuOpen] = useState(false); // Controla o estado do menu
-    const menuRef = useRef(null); // Ref para o menu
-    //context do carrinho de compras para limparo carrinho que fizer Logout
-    // const { cartItems } = useCart();
-    // Fecha o menu se clicar fora dele
+    // Desestruturação dos valores do contexto de autenticação
+    const { signed, loadingAuth, handleLogout } = useAuth();
+    // Estado para controlar a visibilidade do menu
+    const [menuOpen, setMenuOpen] = useState(false);
+    // Refs para referenciar elementos DOM
+    const menuRef = useRef(null);
+    const buttonRef = useRef(null);
+    // Efeito para detectar clique fora do menu e fechá-lo
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setMenuOpen(false);
+            if (menuRef.current &&
+                !menuRef.current.contains(event.target) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target)) {
+                setMenuOpen(false); // Fecha o menu se o clique for fora
             }
         };
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside); // Adiciona evento de clique
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside); // Limpa evento ao desmontar
         };
     }, []);
-    // Não exibe nada até que o carregamento esteja completo
+    // Função para alternar a visibilidade do menu
+    const toggleMenu = () => setMenuOpen((prev) => !prev);
     if (loadingAuth) {
-        return null;
+        return null; // Retorna null enquanto a autenticação está carregando
     }
-    // Função que alterna o estado da variável que controla se o menu está aberto
-    const toggleMenu = () => {
-        setMenuOpen((prev) => !prev);
-    };
-    return (_jsx(Container, { children: _jsxs("header", { className: styles.containerHeader, children: [_jsx(Link, { to: "/", children: _jsx("img", { src: logoImg, alt: "Logo do site", className: styles.imgHeader }) }), signed ? (_jsxs("div", { className: styles.userMenu, children: [_jsx("div", { className: styles.login, onClick: toggleMenu, children: _jsx(FiUser, { size: 20, color: "#000" }) }), menuOpen && ( // Sub-menu
-                        _jsxs("div", { ref: menuRef, className: styles.dropMenu, children: [_jsx(Link, { to: "/dashboard", onClick: () => setMenuOpen(false), children: _jsx("p", { className: styles.btnMenu, children: "Dashboard" }) }), _jsx(Link, { to: "/dashboard/new", onClick: () => setMenuOpen(false), children: _jsx("p", { className: styles.btnMenu, children: "Novo Produto" }) }), _jsx(Link, { to: "/cart", onClick: () => setMenuOpen(false), children: _jsx("p", { className: styles.btnMenu, children: "Carrinho" }) }), _jsx(Link, { to: "/", onClick: () => {
-                                        handleLogout(); // Realiza o logout
-                                        setMenuOpen(false); // Fecha o menu
-                                    }, children: _jsx("p", { className: styles.btnLogout, children: "Sair" }) })] }))] })) : (_jsx(Link, { to: "/login", children: _jsx("div", { className: styles.login, children: _jsx(FiLogIn, { size: 20, color: "#000" }) }) }))] }) }));
+    return (_jsx(Container, { children: _jsxs("header", { className: styles.containerHeader, children: [_jsxs(Link, { to: "/", children: [" ", _jsx("img", { src: logoImg, alt: "Logo do site", className: styles.imgHeader }), " "] }), signed ? ( // Se o usuário estiver autenticado, exibe o menu de usuário
+                _jsxs("div", { className: styles.userMenu, children: [_jsxs("div", { className: styles.login, onClick: toggleMenu, ref: buttonRef, children: [_jsx(PiUserList, { size: 24, color: "#000" }), " "] }), _jsxs("div", { ref: menuRef, className: `${styles.dropMenu} ${menuOpen ? styles.menuOpen : "" // Aplica a classe 'menuOpen' se o menu estiver aberto
+                            }`, children: [_jsxs(Link, { to: "/dashboard", onClick: () => setMenuOpen(false), children: [_jsx("p", { className: styles.btnMenu, children: "Dashboard" }), " "] }), _jsxs(Link, { to: "/dashboard/new", onClick: () => setMenuOpen(false), children: [_jsx("p", { className: styles.btnMenu, children: "Novo Produto" }), " "] }), _jsxs(Link, { to: "/cart", onClick: () => setMenuOpen(false), children: [_jsx("p", { className: styles.btnMenu, children: "Carrinho" }), " "] }), _jsxs(Link, { to: "/", onClick: () => {
+                                        handleLogout(); // Chama a função de logout
+                                        setMenuOpen(false); // Fecha o menu após logout
+                                    }, children: [_jsx("p", { className: styles.btnLogout, children: "Sair" }), " "] })] })] })) : (
+                // Se o usuário não estiver autenticado, exibe o botão de login
+                _jsx(Link, { to: "/login", children: _jsxs("div", { className: styles.login, children: [_jsx(HiOutlineArrowRightOnRectangle, { size: 24, color: "#000" }), " "] }) }))] }) }));
 }
-export default GlobalHeader;
+export default GlobalHeader; // Exporta o componente GlobalHeader

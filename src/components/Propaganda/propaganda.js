@@ -17,7 +17,7 @@ export function Propaganda() {
         },
         {
             img: bannerWebCarros,
-            link: "https://floresta-negra.vercel.app/", // Link para o banner do WebCarros
+            link: "https://webcarros-lovat-two.vercel.app/", // Link para o banner do WebCarros
         },
     ];
     // Função que avança para o próximo banner, aplicando a rotação dos slides
