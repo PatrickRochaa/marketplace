@@ -96,11 +96,14 @@
 /* Botões de navegação do carrossel */
 .prevButton,
 .nextButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 35%; /* Tenta centralizar verticalmente */
   transform: translateY(-50%); /* Ajusta para centralizar exatamente */
   background-color: #008000; /* Cor de fundo verde */
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 10px; /* Ajuste o padding conforme necessário */
   font-size: 20px;
