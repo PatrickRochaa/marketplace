@@ -172,3 +172,29 @@
     background-position: -200% 0; /* Move para o lado oposto */
   }
 }
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .prevButton,
+  .nextButton {
+    width: 35px; /* Reduzir a largura dos botões */
+    height: 35px; /* Reduzir a altura dos botões */
+    font-size: 18px; /* Ajustar o tamanho da fonte */
+  }
+}
+
+@media (max-width: 480px) {
+  .prevButton,
+  .nextButton {
+    width: 30px; /* Reduzir ainda mais a largura dos botões */
+    height: 30px; /* Reduzir ainda mais a altura dos botões */
+    font-size: 16px; /* Ajustar o tamanho da fonte */
+  }
+  /* Ajustar o posicionamento dos botões em telas muito pequenas */
+  .prevButton {
+    left: 5px;
+  }
+  .nextButton {
+    right: 5px;
+  }
+}
