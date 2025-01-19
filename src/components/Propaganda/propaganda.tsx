@@ -1,93 +1,143 @@
 import { useState, useEffect } from "react";
-import styles from "./propaganda.module.css"; // Importa os estilos do arquivo CSS
-import { Container } from "../Container/container"; // Componente de container
-import bannerFloresta from "../../assets/bannerFloresta.png"; // Imagem da Floresta Negra
-import bannerWebCarros from "../../assets/bannerWebCarros.png"; // Imagem da WebCarros
+// Importa os estilos do arquivo CSS
+import styles from "./propaganda.module.css";
+// Componente de container
+import { Container } from "../Container/container";
+// Imagem da Floresta Negra
+import bannerFloresta from "../../assets/bannerFloresta.png";
+// Imagem da WebCarros
+import bannerWebCarros from "../../assets/bannerWebCarros.png";
+// Importando as setas do React Icons
+import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 
 export function Propaganda() {
-  // Definindo o estado para o índice atual da imagem exibida
+  // Estado para controlar o índice do slide atual
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Estado que controla o carregamento das imagens
+  // Estado para controlar o carregamento da imagem (loading)
   const [loading, setLoading] = useState(true);
 
-  // Lista de banners com as imagens e links
+  /* ============================================ */
+  // Lista de banners com as imagens e os links
   const banners = [
     {
       img: bannerFloresta,
-      link: "https://floresta-negra.vercel.app/", // Link para o banner da Floresta Negra
+      link: "https://floresta-negra.vercel.app/",
     },
     {
       img: bannerWebCarros,
-      link: "https://webcarros-lovat-two.vercel.app/", // Link para o banner do WebCarros
+      link: "https://webcarros-lovat-two.vercel.app/",
     },
   ];
 
-  // Função que avança para o próximo banner, aplicando a rotação dos slides
+  /* ============================================ */
+  // Função para avançar para o próximo slide
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length); // Incrementa o índice e volta ao início se atingir o final
+    // Atualiza o índice do slide para o próximo, se chegar no final, volta para o primeiro
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
   };
 
-  // Autoplay - faz o slideshow avançar automaticamente a cada 5 segundos
+  /* ============================================ */
+  // Função para retroceder para o slide anterior
+  const prevSlide = () => {
+    // Atualiza o índice do slide para o anterior, se estiver no primeiro, vai para o último
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + banners.length) % banners.length
+    );
+  };
+
+  /* ============================================ */
+  // Hook para autoavançar os slides a cada 8 segundos
   useEffect(() => {
-    const interval = setInterval(nextSlide, 8000); // Configura o intervalo de 8 segundos
-    return () => clearInterval(interval); // Limpa o intervalo quando o componente é desmontado
+    // Cria um intervalo que chama a função nextSlide a cada 8 segundos
+    const interval = setInterval(nextSlide, 8000);
+
+    // Limpa o intervalo quando o componente é desmontado ou o hook é reexecutado
+    return () => clearInterval(interval);
   }, []);
 
-  // Função que altera o estado de 'loading' para 'false' quando a imagem é carregada
+  /* ============================================ */
+  // Função chamada quando a imagem é carregada
   const handleImageLoad = () => {
-    setLoading(false); // Define 'loading' como falso após carregar a imagem
+    // Define o estado 'loading' como false quando a imagem é carregada
+    setLoading(false);
   };
 
+  /* ============================================ */
   return (
     <Container>
       <section className={styles.cross_promotion}>
         <div className={styles.carousel}>
-          {/* Contêiner que controla a posição dos slides */}
+          {/* Skeleton (esqueleto de carregamento) que aparece enquanto as imagens não carregam */}
+          {loading && (
+            <div className={styles.skeletonWrapper}>
+              <div className={styles.skeleton}></div>
+            </div>
+          )}
+
+          {/* Contêiner que controla os slides */}
           <div
             className={styles.slidesContainer}
             style={{
-              transform: `translateX(-${currentIndex * 100}%)`, // Controla a posição do slide atual
-              transition: "transform 0.5s ease-in-out", // Transição suave entre os slides
+              // Controla a posição do slide visível, baseado no índice atual
+              transform: `translateX(-${currentIndex * 100}%)`,
+              // Aplica uma transição suave entre os slides
+              transition: "transform 0.5s ease-in-out",
             }}
           >
-            {/* Itera sobre a lista de banners e cria os slides */}
+            {/* Mapeia os banners e exibe um slide para cada um */}
             {banners.map((banner, index) => (
               <div key={index} className={styles.slide}>
-                {/* Link do slide que redireciona ao site */}
+                {/* Link do banner que direciona para o URL correspondente */}
                 <a
                   href={banner.link}
-                  target="_blank" // Abre o link em uma nova aba
-                  rel="noopener noreferrer" // Protege contra vulnerabilidades de segurança
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={styles.imageLink}
                 >
-                  {/* Exibe o skeleton se a imagem estiver carregando */}
-                  {loading && index === currentIndex ? (
-                    <div className={styles.skeleton}></div> // Skeleton visível somente para o slide atual
-                  ) : (
-                    <img
-                      src={banner.img} // Define a imagem do slide
-                      alt={banner.img} // Alt para acessibilidade
-                      className={styles.image} // Classe para estilização
-                      onLoad={handleImageLoad} // Define 'loading' como falso quando a imagem carrega
-                    />
-                  )}
+                  {/* Imagem do banner */}
+                  <img
+                    src={banner.img}
+                    alt={banner.img}
+                    className={styles.image}
+                    // Chama handleImageLoad quando a imagem for carregada
+                    onLoad={handleImageLoad}
+                  />
                 </a>
               </div>
             ))}
           </div>
-          {/* Indicadores de paginação */}
-          <div className={styles.pagination}>
-            {banners.map((_, index) => (
-              <span
-                key={index} // Chave única para cada ponto de paginação
-                className={`${styles.paginationDot} ${
-                  index === currentIndex ? styles.activeDot : "" // Adiciona a classe do ponto ativo
-                }`}
-                onClick={() => setCurrentIndex(index)} // Define o slide ao clicar no indicador
-              ></span>
-            ))}
-          </div>
+
+          {/* Botões de navegação, aparecem apenas quando o 'loading' é falso */}
+          {!loading && (
+            <>
+              <button className={styles.prevButton} onClick={prevSlide}>
+                <RiArrowLeftDoubleFill /> {/* Seta para retroceder */}
+              </button>
+              <button className={styles.nextButton} onClick={nextSlide}>
+                <RiArrowRightDoubleFill /> {/* Seta para avançar */}
+              </button>
+            </>
+          )}
+
+          {/* Indicadores de navegação para cada slide, aparecem quando o 'loading' é falso */}
+          {!loading && (
+            <>
+              <div className={styles.pagination}>
+                {/* Cria um ponto de navegação para cada banner */}
+                {banners.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`${styles.paginationDot} ${
+                      index === currentIndex ? styles.activeDot : ""
+                    }`}
+                    // Altera o slide ao clicar no indicador
+                    onClick={() => setCurrentIndex(index)}
+                  ></span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
     </Container>
