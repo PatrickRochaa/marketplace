@@ -74,7 +74,7 @@
   width: 18px; /* Largura do ponto */
   height: 12px; /* Altura do ponto */
   background-color: transparent;
-  border: 1px solid #66b266; /* Borda padrão */
+  border: 1px solid #008000; /* Borda padrão */
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   transform: skew(-20deg); /* Paralelogramo */
@@ -82,13 +82,13 @@
 
 /* Estilo para o ponto ativo na paginação */
 .activeDot {
-  background-color: #66b266;
+  background-color: #008000;
   padding: 2px;
 }
 
 /* Efeito de transição suave quando um ponto é clicado */
 .paginationDot:hover {
-  background-color: #66b266;
+  background-color: #008000;
 }
 
 /* Botões de navegação do carrossel (não visíveis nesta configuração) */
