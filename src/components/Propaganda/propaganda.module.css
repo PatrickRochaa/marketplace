@@ -1,80 +1,123 @@
+/* Estilo do contêiner principal para promoção cruzada */
 .cross_promotion {
   max-width: 100%; /* Garante que o contêiner ocupe toda a largura da tela */
-  position: absolute; /* Posiciona o contêiner no topo da página */
+  position: absolute; /* Posiciona o contêiner em relação ao elemento pai */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden; /* Evita que os elementos saiam do contêiner */
-  box-sizing: border-box;
-  border-radius: 8px; /* Bordas arredondadas */
-  height: 100%; /* Ajuste a altura conforme necessário */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras para dar destaque */
+  overflow: hidden; /* Impede que elementos internos escapem do contêiner */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo do tamanho total */
+  border-radius: 8px; /* Adiciona bordas arredondadas ao contêiner */
+  height: 100%; /* Ajusta a altura para preencher o espaço disponível */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque visual */
 }
 
+/* Configuração geral do carrossel */
+/* Adiciona um efeito de fade para o background ao trocar slides */
 .carousel {
   display: flex; /* Usa o layout flexível */
   align-items: center; /* Centraliza os itens na vertical */
   justify-content: center; /* Centraliza os itens na horizontal */
   position: relative; /* Posicionamento relativo para os controles */
+  background-color: #f8f8f8; /* Cor padrão do fundo do carrossel */
+  transition: background-color 0.5s ease-in-out; /* Transição suave para o fundo */
 }
 
+/* Contêiner dos slides do carrossel */
 .slidesContainer {
-  display: flex; /* Organiza os slides em linha */
-  transition: transform 0.5s ease-in-out; /* Transição suave ao trocar de slide */
-  width: 100%;
+  display: flex; /* Organiza os slides lado a lado */
+  transition: transform 0.5s ease-in-out; /* Transição suave para animação de slides */
+  width: 100%; /* Ajusta a largura para ocupar todo o espaço disponível */
 }
 
+/* Cada slide individual no carrossel */
 .slide {
-  min-width: 100%; /* Cada slide ocupa 100% da largura do contêiner */
-  height: 100%; /* Cada slide ocupa 100% da altura do contêiner */
-  position: relative;
-  overflow: hidden; /* Impede que o conteúdo extra dos slides apareça */
+  min-width: 100%; /* Cada slide ocupa 100% da largura visível do contêiner */
+  height: 100%; /* Ajusta a altura para corresponder ao contêiner */
+  position: relative; /* Base para posicionamento de elementos internos */
+  overflow: hidden; /* Evita que conteúdos ultrapassem os limites do slide */
 }
 
+/* Estilo das imagens no carrossel */
 .image {
-  width: 100%; /* Imagem ocupa toda a largura do slide */
-  height: 150px; /* Tamanho fixo da imagem */
-  object-fit: cover; /* A imagem se ajusta sem distorção */
-  border-radius: 8px; /* Bordas arredondadas */
-  transition: transform 0.3s ease; /* Transição para zoom suave ao passar o mouse */
+  width: 100%; /* Faz a imagem preencher toda a largura do slide */
+  height: 150px; /* Define uma altura fixa para as imagens */
+  object-fit: cover; /* Ajusta a imagem para preencher o espaço sem distorção */
+  border-radius: 8px; /* Adiciona bordas arredondadas à imagem */
+  transition: transform 0.3s ease; /* Transição suave para o efeito de zoom */
 }
 
+/* Links das imagens no carrossel */
 .imageLink {
-  display: block; /* Garante que o link ocupe todo o espaço da imagem */
-  border-radius: 8px; /* Garante que a borda arredondada seja aplicada ao link também */
-  overflow: hidden; /* Evita que o link ultrapasse as bordas */
+  display: block; /* Garante que o link envolva completamente a imagem */
+  border-radius: 8px; /* Aplica bordas arredondadas ao link */
+  overflow: hidden; /* Evita que conteúdos do link ultrapassem os limites */
 }
 
+/* Efeito de hover sobre a imagem no link */
 .imageLink:hover img {
-  transform: scale(1.1); /* Efeito de zoom ao passar o mouse sobre a imagem */
+  transform: scale(1.1); /* Aplica zoom suave ao passar o mouse */
 }
 
+/* Contêiner dos pontos de paginação do carrossel */
+.pagination {
+  position: absolute;
+  bottom: 10px; /* Ajusta a posição vertical */
+  left: 20px; /* Alinha à esquerda */
+  display: flex;
+  gap: 8px;
+}
+
+/* Ponto individual de paginação */
+.paginationDot {
+  width: 18px; /* Largura do ponto */
+  height: 12px; /* Altura do ponto */
+  background-color: transparent;
+  border: 1px solid #66b266; /* Borda padrão */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: skew(-20deg); /* Paralelogramo */
+}
+
+/* Estilo para o ponto ativo na paginação */
+.activeDot {
+  background-color: #66b266;
+  padding: 2px;
+}
+
+/* Efeito de transição suave quando um ponto é clicado */
+.paginationDot:hover {
+  background-color: #66b266;
+}
+
+/* Botões de navegação do carrossel (não visíveis nesta configuração) */
 .prevButton,
 .nextButton {
-  display: none; /* Remove os botões de navegação */
+  display: none; /* Esconde os botões */
 }
 
+/* Esqueleto de carregamento para imagens */
 .skeleton {
-  width: 100%; /* Largura do esqueleto igual à da imagem */
-  height: 150px; /* Altura do esqueleto igual à da imagem */
+  width: 100%; /* Ajusta a largura para corresponder ao tamanho da imagem */
+  height: 150px; /* Altura igual à definida para a imagem */
   background: linear-gradient(
     90deg,
     #e6e6e6 25%,
     #ffffff 50%,
     #e6e6e6 75%
-  ); /* Efeito de carregamento */
-  background-size: 200% 100%; /* Acelera o movimento do efeito */
-  border-radius: 8px; /* Bordas arredondadas para o esqueleto */
-  animation: pulse 3s infinite ease-in-out; /* Animação de pulso */
+  ); /* Cria efeito de brilho para o esqueleto */
+  background-size: 200% 100%; /* Ajusta o tamanho do gradiente */
+  border-radius: 8px; /* Adiciona bordas arredondadas ao esqueleto */
+  animation: pulse 3s infinite ease-in-out; /* Animação contínua de movimento */
 }
 
-/* Animação de brilho do esqueleto */
+/* Animação do efeito de brilho no esqueleto */
 @keyframes pulse {
   0% {
-    background-position: 200% 0;
+    background-position: 200% 0; /* Começa fora da área visível */
   }
   100% {
-    background-position: -200% 0;
+    background-position: -200% 0; /* Move para o lado oposto */
   }
 }
