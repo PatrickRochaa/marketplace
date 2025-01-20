@@ -217,3 +217,10 @@
     margin-bottom: 8px;
   }
 }
+
+@media (max-width: 500px) {
+  /*Container geral*/
+  .dashboard {
+    width: 95vw;
+  }
+}
