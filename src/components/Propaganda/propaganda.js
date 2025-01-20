@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect } from "react";
 // Importa os estilos do arquivo CSS
 import styles from "./propaganda.module.css";
@@ -8,8 +8,6 @@ import { Container } from "../Container/container";
 import bannerFloresta from "../../assets/bannerFloresta.png";
 // Imagem da WebCarros
 import bannerWebCarros from "../../assets/bannerWebCarros.png";
-// Importando as setas do React Icons
-import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 export function Propaganda() {
     // Estado para controlar o índice do slide atual
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,25 +26,14 @@ export function Propaganda() {
         },
     ];
     /* ============================================ */
-    // Função para avançar para o próximo slide
-    const nextSlide = () => {
-        // Atualiza o índice do slide para o próximo, se chegar no final, volta para o primeiro
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-    };
-    /* ============================================ */
-    // Função para retroceder para o slide anterior
-    const prevSlide = () => {
-        // Atualiza o índice do slide para o anterior, se estiver no primeiro, vai para o último
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + banners.length) % banners.length);
-    };
-    /* ============================================ */
-    // Hook para autoavançar os slides a cada 8 segundos
+    // Hook para autoavançar os slides a cada 6 segundos
     useEffect(() => {
-        // Cria um intervalo que chama a função nextSlide a cada 8 segundos
-        const interval = setInterval(nextSlide, 8000);
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+        }, 6000); // Troca a cada 6 segundos
         // Limpa o intervalo quando o componente é desmontado ou o hook é reexecutado
         return () => clearInterval(interval);
-    }, []);
+    }, [banners.length]);
     /* ============================================ */
     // Função chamada quando a imagem é carregada
     const handleImageLoad = () => {
@@ -61,7 +48,7 @@ export function Propaganda() {
                             transition: "transform 0.5s ease-in-out",
                         }, children: banners.map((banner, index) => (_jsx("div", { className: styles.slide, children: _jsx("a", { href: banner.link, target: "_blank", rel: "noopener noreferrer", className: styles.imageLink, children: _jsx("img", { src: banner.img, alt: banner.img, className: styles.image, 
                                     // Chama handleImageLoad quando a imagem for carregada
-                                    onLoad: handleImageLoad }) }) }, index))) }), !loading && (_jsxs(_Fragment, { children: [_jsxs("button", { className: styles.prevButton, onClick: prevSlide, children: [_jsx(RiArrowLeftDoubleFill, {}), " "] }), _jsxs("button", { className: styles.nextButton, onClick: nextSlide, children: [_jsx(RiArrowRightDoubleFill, {}), " "] })] })), !loading && (_jsx(_Fragment, { children: _jsx("div", { className: styles.pagination, children: banners.map((_, index) => (_jsx("span", { className: `${styles.paginationDot} ${index === currentIndex ? styles.activeDot : ""}`, 
-                                // Altera o slide ao clicar no indicador
-                                onClick: () => setCurrentIndex(index) }, index))) }) }))] }) }) }));
+                                    onLoad: handleImageLoad }) }) }, index))) }), !loading && (_jsx("div", { className: styles.pagination, children: banners.map((_, index) => (_jsx("span", { className: `${styles.paginationDot} ${index === currentIndex ? styles.activeDot : ""}`, 
+                            // Altera o slide ao clicar no indicador
+                            onClick: () => setCurrentIndex(index) }, index))) }))] }) }) }));
 }

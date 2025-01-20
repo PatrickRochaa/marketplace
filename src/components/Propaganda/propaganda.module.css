@@ -93,51 +93,6 @@
   background-color: #008000;
 }
 
-/* Botões de navegação do carrossel */
-.prevButton,
-.nextButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 35%; /* Tenta centralizar verticalmente */
-  transform: translateY(-50%); /* Ajusta para centralizar exatamente */
-  background-color: #008000; /* Cor de fundo verde */
-  color: #ffffff;
-  border: none;
-  padding: 10px; /* Ajuste o padding conforme necessário */
-  font-size: 20px;
-  transform: skew(-20deg); /* Paralelogramo */
-  cursor: pointer;
-  z-index: 10; /* Garante que os botões fiquem acima dos slides */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra sutil para profundidade */
-  transition: background-color 0.5s ease-in-out; /* Transição suave de cor */
-  width: 40px; /* Largura fixa para garantir um tamanho consistente */
-  height: 40px; /* Altura fixa para garantir um tamanho consistente */
-  z-index: 2;
-}
-
-/* Alinhar os botões à esquerda e à direita */
-.prevButton {
-  left: 10px;
-}
-
-.nextButton {
-  right: 10px;
-}
-
-/* Efeito de hover sobre os botões */
-.prevButton:hover,
-.nextButton:hover {
-  background-color: #006400; /* Cor de fundo mais escura ao passar o mouse */
-}
-
-/* Efeito de transição suave no hover */
-.prevButton:focus,
-.nextButton:focus {
-  outline: none; /* Remove o contorno padrão ao focar */
-}
-
 /* Esqueleto de carregamento para imagens */
 .skeletonWrapper {
   position: absolute; /* Garante que o esqueleto cubra a imagem */
@@ -173,30 +128,5 @@
   }
   100% {
     background-position: -200% 0; /* Move para o lado oposto */
-  }
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 768px) {
-  .prevButton,
-  .nextButton {
-    width: 35px; /* Reduzir a largura dos botões */
-    height: 35px; /* Reduzir a altura dos botões */
-  }
-}
-
-@media (max-width: 480px) {
-  .prevButton,
-  .nextButton {
-    width: 30px; /* Reduzir ainda mais a largura dos botões */
-    height: 30px; /* Reduzir ainda mais a altura dos botões */
-    font-size: 16px; /* Ajustar o tamanho da fonte */
-  }
-  /* Ajustar o posicionamento dos botões em telas muito pequenas */
-  .prevButton {
-    left: 5px;
-  }
-  .nextButton {
-    right: 5px;
   }
 }

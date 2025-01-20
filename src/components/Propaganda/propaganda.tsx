@@ -7,8 +7,6 @@ import { Container } from "../Container/container";
 import bannerFloresta from "../../assets/bannerFloresta.png";
 // Imagem da WebCarros
 import bannerWebCarros from "../../assets/bannerWebCarros.png";
-// Importando as setas do React Icons
-import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 
 export function Propaganda() {
   // Estado para controlar o índice do slide atual
@@ -31,30 +29,15 @@ export function Propaganda() {
   ];
 
   /* ============================================ */
-  // Função para avançar para o próximo slide
-  const nextSlide = () => {
-    // Atualiza o índice do slide para o próximo, se chegar no final, volta para o primeiro
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-  };
-
-  /* ============================================ */
-  // Função para retroceder para o slide anterior
-  const prevSlide = () => {
-    // Atualiza o índice do slide para o anterior, se estiver no primeiro, vai para o último
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + banners.length) % banners.length
-    );
-  };
-
-  /* ============================================ */
-  // Hook para autoavançar os slides a cada 8 segundos
+  // Hook para autoavançar os slides a cada 6 segundos
   useEffect(() => {
-    // Cria um intervalo que chama a função nextSlide a cada 8 segundos
-    const interval = setInterval(nextSlide, 8000);
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+    }, 6000); // Troca a cada 6 segundos
 
     // Limpa o intervalo quando o componente é desmontado ou o hook é reexecutado
     return () => clearInterval(interval);
-  }, []);
+  }, [banners.length]);
 
   /* ============================================ */
   // Função chamada quando a imagem é carregada
@@ -108,35 +91,21 @@ export function Propaganda() {
             ))}
           </div>
 
-          {/* Botões de navegação, aparecem apenas quando o 'loading' é falso */}
-          {!loading && (
-            <>
-              <button className={styles.prevButton} onClick={prevSlide}>
-                <RiArrowLeftDoubleFill /> {/* Seta para retroceder */}
-              </button>
-              <button className={styles.nextButton} onClick={nextSlide}>
-                <RiArrowRightDoubleFill /> {/* Seta para avançar */}
-              </button>
-            </>
-          )}
-
           {/* Indicadores de navegação para cada slide, aparecem quando o 'loading' é falso */}
           {!loading && (
-            <>
-              <div className={styles.pagination}>
-                {/* Cria um ponto de navegação para cada banner */}
-                {banners.map((_, index) => (
-                  <span
-                    key={index}
-                    className={`${styles.paginationDot} ${
-                      index === currentIndex ? styles.activeDot : ""
-                    }`}
-                    // Altera o slide ao clicar no indicador
-                    onClick={() => setCurrentIndex(index)}
-                  ></span>
-                ))}
-              </div>
-            </>
+            <div className={styles.pagination}>
+              {/* Cria um ponto de navegação para cada banner */}
+              {banners.map((_, index) => (
+                <span
+                  key={index}
+                  className={`${styles.paginationDot} ${
+                    index === currentIndex ? styles.activeDot : ""
+                  }`}
+                  // Altera o slide ao clicar no indicador
+                  onClick={() => setCurrentIndex(index)}
+                ></span>
+              ))}
+            </div>
           )}
         </div>
       </section>
