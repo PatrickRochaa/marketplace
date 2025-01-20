@@ -185,7 +185,7 @@ export function Vendas() {
 
         <main className={styles.mainContent}>
           <section className={styles.salesTableContainer}>
-            <h1 className={styles.title}>Compras Realizadas</h1>
+            <h1 className={styles.title}>Vendas Realizadas</h1>
 
             {/* Sempre visível: Filtro de período */}
             <Periodo

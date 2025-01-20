@@ -1,11 +1,11 @@
 /* Responsividade primeiro: estilo base para dispositivos móveis */
+/*Container gerali*/
 .dashboard {
   display: flex;
   flex-direction: column; /* Coloca a sidebar acima do conteúdo principal */
-  max-width: 100%;
   margin: 0 auto;
   width: 100%;
-  border: 1px solid #ddd; /* Borda leve para destacar o contêiner */
+  border: 2px solid #ddd; /*  Borda leve para destacar o contêiner */
   border-radius: 8px; /* Borda arredondada para um visual mais suave */
 }
 
@@ -26,7 +26,7 @@
   text-align: center;
   margin-bottom: 20px;
 }
-
+/*Titulo Dashboard*/
 .sidebarHeader h2 {
   font-size: 1.5rem;
 }
@@ -37,10 +37,12 @@
   padding: 0;
 }
 
+/*Espaço entre o Container dos links*/
 .sidebar ul li {
   margin: 15px 0;
 }
 
+/*Estilo dos links*/
 .sidebar ul li a {
   color: #adb5bd; /* Texto cinza claro */
   text-decoration: none;
@@ -57,12 +59,12 @@
   color: #fff; /* Texto branco */
 }
 
-/* Conteúdo principal */
+/* Conteúdo que mostra a tabela */
 .mainContent {
   flex: 1; /* Preenche o restante do espaço disponível */
-  padding: 20px;
+  padding: 5px;
   background-color: #f5f5f5;
-  margin-top: 20px; /* Espaço entre a sidebar e o conteúdo principal */
+  margin-top: 10px; /* Espaço entre a sidebar e o conteúdo principal */
   transform: translateY(20px);
   opacity: 0;
   animation: FadeIn 0.8s forwards;
@@ -76,19 +78,20 @@
   }
 }
 
-/* Título Principal */
+/* Título Vendas*/
 .title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: #333;
   text-align: left;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
   display: inline-block;
   border: none;
   width: 100%;
 }
 
+/*Criativo para o titulo*/
 .title::after {
   content: "";
   position: absolute;
@@ -100,17 +103,22 @@
   border-radius: 2px;
 }
 
-/*Mensagem de vendas ta vazia*/
+/*Mensagem de compras ta vazia*/
 .alert {
   font-size: 1.25rem;
   margin: 15px 0px;
   color: #333;
 }
 
+/*container tabela*/
+.salesTableContainer {
+  width: 100%;
+}
+
 /* Estilos da Tabela */
 .salesTable {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   background: white;
@@ -144,9 +152,10 @@
   animation: FadeOut 1s forwards;
 }
 
+/*linhas e colunas da tabela*/
 .salesTable th,
 .salesTable td {
-  padding: 10px 6px;
+  padding: 6px;
   text-align: center;
   color: #333;
   border-bottom: 1px solid #f1f1f1;
@@ -163,12 +172,13 @@
 
 /* Estilo das células da Tabela */
 .salesTable td {
+  transition: background-color 0.3s ease, transform 0.3s ease;
   font-size: 0.8rem;
   color: #555;
 }
 
-/* Estilos do total vendido com a animação */
-.totalVendido {
+/* Estilos do total comprado com a animação */
+.totalComprado {
   width: 100%;
   font-size: 1.2rem;
   margin-top: 30px;
@@ -176,11 +186,11 @@
   justify-content: space-around;
   transform: translateY(20px);
   opacity: 0;
-  animation: totalVendidoFadeIn 0.8s forwards;
+  animation: totalCompradoFadeIn 0.8s forwards;
 }
 
-/* Animação para o total vendido */
-@keyframes totalVendidoFadeIn {
+/* Animação para o total Comprado */
+@keyframes totalCompradoFadeIn {
   to {
     transform: translateY(0);
     opacity: 1;
@@ -196,7 +206,7 @@
   gap: 0.5rem;
   transform: translateY(20px);
   opacity: 0;
-  animation: totalVendidoFadeIn 2s forwards;
+  animation: totalCompradoFadeIn 2s forwards;
 }
 
 /* Botões de paginação */
@@ -209,15 +219,20 @@
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.3s, transform 0.2s;
 }
 
+/*Estilo da pagina atual*/
 .pagination button.active {
   background-color: #008000;
   color: white;
   border-color: #008000;
 }
 
+/*Estilo para as demais paginas e botoes que nao estao selecionados*/
 .pagination button:not(.active) {
   background-color: #f0f0f0; /* Cor mais leve para não selecionados */
   color: #aaa; /* Cor mais suave para não selecionados */
@@ -225,50 +240,85 @@
 }
 
 /* Setas de paginação */
-button.arrowButton {
-  color: #008000;
+button.arrowButton:hover {
+  background-color: #008000;
+  color: #f0f0f0;
   transition: background-color 0.5s, color 0.5s; /* Adiciona a transição */
 }
 
-.pagination button:not(.active):hover,
-button.arrowButton:hover {
-  background-color: #008000;
-  color: white;
+@media (max-width: 500px) {
+  /*Container geral*/
+  .dashboard {
+    width: 95%;
+  }
+
+  /*linhas e colunas da tabela*/
+  .salesTable th,
+  .salesTable td {
+    font-size: 10px; /* Ajuste o tamanho da fonte */
+    padding: 4px;
+  }
+  /* container da paginação */
+  .pagination {
+    flex-wrap: wrap; /* Ajusta os botões de paginação */
+    gap: 4px; /* Espaçamento entre botões */
+  }
 }
 
 /* Ajustes para tablets e telas maiores */
 @media (min-width: 768px) {
+  /*Container geral*/
   .dashboard {
     flex-direction: row; /* Coloca a sidebar ao lado do conteúdo principal */
     max-width: 900px;
   }
 
+  /* Sidebar (menu lateral) */
   .sidebar {
     flex: 0 0 250px; /* Define o tamanho fixo para a sidebar */
     border-top-right-radius: 0;
     border-bottom-left-radius: 5px; /* Remove a borda inferior esquerda */
   }
 
-  .mainContent {
-    margin-top: 0;
+  /* Título Compras */
+  .title {
+    font-size: 2rem;
+    margin-top: 10px;
   }
 
+  /* Conteúdo que mostra a tabela */
+  .mainContent {
+    margin-top: 0;
+    padding: 20px;
+  }
+
+  /* Estilos da Tabela */
   .salesTable {
     font-size: 0.9rem;
   }
 
+  /*linhas e colunas da tabela*/
   .salesTable th,
   .salesTable td {
-    padding: 12px 8px;
+    font-size: 12px; /* Ajuste o tamanho da fonte */
+    padding: 4px;
+  }
+
+  /* container da paginação */
+  .pagination {
+    flex-wrap: wrap; /* Ajusta os botões de paginação */
+    gap: 4px; /* Espaçamento entre botões */
   }
 }
 
 @media (min-width: 1024px) {
+  /* Estilos da Tabela */
   .salesTable {
     font-size: 1rem;
     max-width: 900px;
   }
 
+  /*linhas e colunas da tabela*/
   .salesTable th,
   .salesTable td {
     padding: 16px;

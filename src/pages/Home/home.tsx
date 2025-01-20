@@ -330,7 +330,7 @@ export function Home() {
       {isModalCart && (
         <div className={cartModal.containerCartModal}>
           <div className={cartModal.CartModal}>
-            <h3>Resumo Carrinho</h3>
+            <h3 className={cartModal.tituloCart}>Resumo Carrinho</h3>
 
             {/* Se o carrinho tiver itens e o usuário estiver logado (usando cartItems) */}
             {signed && cartItems.length > 0 && (

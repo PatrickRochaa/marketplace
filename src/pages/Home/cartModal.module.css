@@ -18,7 +18,7 @@ html.modalOpen {
   align-items: center; /* Centraliza verticalmente */
   justify-content: center; /* Centraliza horizontalmente */
   z-index: 100; /* Garante que o modal fique acima de outros elementos */
-  opacity: 0; /* Inicialmente invisível */
+  opacity: 1; /* Inicialmente invisível */
   animation: slideIn 2s ease forwards; /* Animação de entrada suave */
 }
 
@@ -34,7 +34,7 @@ html.modalOpen {
   }
 }
 
-/* Cabeçalho do modal */
+/* Titulo cabeçalho do modal */
 h3 {
   text-align: center; /* Centraliza o texto */
   margin-top: -20px;
@@ -45,21 +45,28 @@ h3 {
 
 /* Conteúdo do modal */
 .CartModal {
-  width: 90%;
+  width: 95%;
+  height: auto; /* Garante que o container tenha altura automática conforme o conteúdo */
   max-width: 500px; /* Limita a largura máxima */
   background-color: #fff; /* Fundo branco */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 40px; /* Espaçamento interno generoso */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 20px; /* Espaçamento interno */
   display: flex;
   flex-direction: column; /* Coloca os elementos em coluna */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
   position: relative;
   z-index: 100; /* Garante que fique acima do fundo */
 }
+
+/*GTitulo do Carrinho*/
+.tituloCart {
+  margin: 0;
+}
+
 /* Cabeçalho dos produtos no carrinho */
 .productHeader {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Coluna maior para o nome, colunas menores para quantidade e subtotal */
+  grid-template-columns: 2fr 2fr 2fr; /* Coluna maior para o nome, colunas menores para quantidade e subtotal */
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
@@ -68,7 +75,7 @@ h3 {
 /* Itens do carrinho */
 .productItem {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Correspondência com o cabeçalho */
+  grid-template-columns: 2fr 2fr 2fr; /* Correspondência com o cabeçalho */
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
   align-items: center;
@@ -93,7 +100,7 @@ h3 {
   margin: 0 auto; /* Centraliza o container */
 }
 
-/* Botões de adicionar e remover */
+/* Botões de aumentar e diminuir produtos */
 .quantityControls button {
   background-color: transparent;
   border: none;
@@ -140,6 +147,7 @@ h3 {
   margin-top: 15px;
 }
 
+/*Estilos do botoes*/
 .loginBtn,
 .registerBtn {
   padding: 10px 20px;
@@ -283,4 +291,43 @@ h3 {
 .viewCartBtn:focus {
   outline: none; /* Remove borda padrão */
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Destaque ao foco */
+}
+
+/* Ajuste de responsividade para telas menores */
+@media (max-width: 768px) {
+  .productHeader,
+  .productItem {
+    grid-template-columns: 1fr 1fr 1fr; /* Coloca os itens em uma única coluna por linha */
+  }
+
+  .productName {
+    word-wrap: break-word; /* Faz o texto quebrar linha quando for muito longo */
+    white-space: normal; /* Permite que o texto quebre em várias linhas */
+    font-size: 1rem; /* Ajusta o tamanho da fonte para caber melhor */
+  }
+
+  .productSubtotal,
+  .quantityControls {
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte para melhorar o espaço */
+  }
+}
+
+/* Outros ajustes gerais */
+.productName {
+  text-align: left;
+  word-wrap: break-word; /* Quebra o texto longo */
+  white-space: normal; /* Permite que quebre linha */
+}
+
+.productItem {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr; /* Manter as colunas em maior largura */
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.productSubtotal {
+  text-align: right;
+  word-wrap: break-word; /* Quebra o texto de valores longos */
 }
