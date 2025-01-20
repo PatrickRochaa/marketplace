@@ -249,7 +249,12 @@ button.arrowButton:hover {
 @media (max-width: 500px) {
   /*Container geral*/
   .dashboard {
-    width: 95%;
+    width: 98%;
+  }
+
+  /* Conteúdo que mostra a tabela */
+  .mainContent {
+    padding: 10px;
   }
 
   /*linhas e colunas da tabela*/
