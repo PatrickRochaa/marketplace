@@ -178,7 +178,7 @@
 }
 
 /* Estilos do total comprado com a animação */
-.totalComprado {
+.totalVendido {
   width: 100%;
   font-size: 1.2rem;
   margin-top: 30px;
@@ -247,11 +247,6 @@ button.arrowButton:hover {
 }
 
 @media (max-width: 500px) {
-  /*Container geral*/
-  .dashboard {
-    width: 98%;
-  }
-
   /* Conteúdo que mostra a tabela */
   .mainContent {
     padding: 10px;
