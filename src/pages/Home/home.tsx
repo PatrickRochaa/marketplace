@@ -212,12 +212,14 @@ export function Home() {
 
       {loading ? (
         <section className={styles.products_container}>
+          {/*Skekeleton enquanto os dados são carregados */}
           {[...Array(3)].map((_, index) => (
             <Skeleton key={index} />
           ))}
         </section>
       ) : filteredProducts.length === 0 ? (
         <div className={styles.alertMessage}>
+          {/*Mensagem caso de erro nao caso nao tenha produto cadastrado*/}
           <h2 className={styles.alertInformation}>Ops!</h2>
           <h2 className={styles.alertInformation}>
             Nenhum produto encontrado.
@@ -225,6 +227,7 @@ export function Home() {
         </div>
       ) : (
         <section className={styles.products_container}>
+          {/*exibiçao dos produtos cadastrador*/}
           {filteredProducts.map((product) => (
             <div key={product.id} className={styles.product_card}>
               <div

@@ -29,13 +29,14 @@ export function CartPage() {
         <h1>Carrinho de Compras</h1>
 
         {loading ? (
-          // Usando o Spinner ao invés do código duplicado
+          // Usando o Spinner para carregamento do carrinho
           <Spinner message="Carregando Carrinho..." />
         ) : cartItems.length === 0 ? (
           <p className={cartPageStyles.emptyCartMessage}>
             Seu carrinho está vazio.
           </p>
         ) : (
+          //exibiçao do produtos no carrinho
           <div className={cartPageStyles.cartItems}>
             {cartItems.map(({ id, name, price, quantity, images }) => (
               <div key={id} className={cartPageStyles.cartItem}>
