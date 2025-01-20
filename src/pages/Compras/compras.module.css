@@ -3,8 +3,6 @@
 .dashboard {
   display: flex;
   flex-direction: column; /* Coloca a sidebar acima do conteúdo principal */
-  margin: 0 auto;
-  width: 100%;
   border: 2px solid #ddd; /*  Borda leve para destacar o contêiner */
   border-radius: 8px; /* Borda arredondada para um visual mais suave */
 }
@@ -247,6 +245,10 @@ button.arrowButton:hover {
 }
 
 @media (max-width: 500px) {
+  /*Container geral*/
+  .dashboard {
+    width: 95vw;
+  }
   /* Conteúdo que mostra a tabela */
   .mainContent {
     padding: 10px;
